@@ -1,4 +1,4 @@
-// Render index.html to entry.png at exactly 1024x1024 (v5).
+// Render index.html to entry.png at exactly 1024x1024 (v6).
 //
 // The flow: start headless Chrome with remote debugging, open the local
 // index.html in a fresh target, pin the viewport to exactly 1024x1024
@@ -14,7 +14,7 @@
 // The render is deterministic: the same index.html always produces the
 // same bytes, which is what the bounty gate requires (the judge sees the
 // exact bytes of entry.png). The page uses only flat vector art and plain
-// gradients, so nothing in it depends on randomness or timing.
+// fills, so nothing in it depends on randomness or timing.
 
 import { writeFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
@@ -23,7 +23,7 @@ import { dirname, join } from 'node:path';
 
 // --- config (environment-specific, keep in sync with the local Chrome) ---
 const CHROME_BIN = '/opt/meta-chromium/chrome';
-const DEBUG_PORT = 9223;
+const DEBUG_PORT = 9224;
 const SIZE = 1024; // entry must be exactly 1024x1024
 const WEBGL_DOMAINS_FILE =
   '/var/lib/hatch-browser/rootfs-base/usr/share/hatch/chromium/webgl-allowed-domains.txt';
@@ -36,7 +36,7 @@ const OUT_PATH = join(REPO_DIR, 'entry.png');
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// --- DevTools HTTP endpoints (http://127.0.0.1:9223/json/...) ---
+// --- DevTools HTTP endpoints (http://127.0.0.1:9224/json/...) ---
 async function devtoolsJson(path, method = 'GET') {
   const res = await fetch(`http://127.0.0.1:${DEBUG_PORT}${path}`, { method });
   if (!res.ok) throw new Error(`DevTools ${method} ${path} -> HTTP ${res.status}`);
