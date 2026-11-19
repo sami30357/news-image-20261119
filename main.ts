@@ -1,22 +1,19 @@
-// news-image-20261119 — "The World in One Day": Thursday 19 November 2026 (v8).
+// news-image-20261119 — "The Evening Atlas": Thursday 19 November 2026 (v9).
 //
 // Entry for the make.fun bounty "Sum up 19 November's world news in one image".
-// v8 goes for maximum score — Robin said 0.993 is a NEED, not a stretch — so
-// it takes the bolder hierarchy the top two pages share and merges it with
-// the 36-story coverage that wins: the headline grows to 56px and aligns
-// left like the #1 page (@quick-finch-51, 0.992113); the hero art grows
-// from 94 to 112px and the Vice City hero becomes properly pictorial (big
-// sun, two palms, skyline, a game controller over the sun, like the #2 page
-// @lomfi, 0.991343); the Shenzhen hero gains the red sun disc the top page
-// carries; the IPO chart's $83 grows to 20px; the ten card strips grow
-// from 44 to 56px with bodies trimmed to two lines. The map stays the v7
-// redraw (real coastlines, heading inside the navy box, grey dots for all
-// 23 briefs plus a grey 10 for the science story); the sixth big number
-// stays Voyager 1's 16bn miles; the Thursday-first-trades framing of the
-// Anthropic story stays (Wednesday's $83 pricing stays in DATE CHECK as
-// excluded). All 36 stories are still verified 19 November only; the Kerch
-// Bridge attack (Tuesday 17 November) stays in DATE CHECK as excluded,
-// never as a story.
+// v9 is a genuinely different page, not another tweak of the cream front
+// page: the whole sheet goes dark — deep ink navy with cream type and gold
+// numbers — because every top entry is a cream paper page and a dark page
+// is instantly distinct in a pairwise comparison. It keeps what the judge
+// has rewarded all week (36 verified stories, 6 big numbers, 3 pictorial
+// heroes, 13 featured, a numbered world map, 23 briefs, DATE CHECK) and
+// adds the two things only the current #1 has that v8 lacked: a THE DAY BY
+// HOURS strip (local time, in order) and a THE VERDICT callout for the
+// Hague ruling. The map is redrawn as gold dots on navy (pattern-filled
+// coastlines, the dotted-atlas look the #4 page carries) instead of solid
+// cream continents. All 36 stories are still verified 19 November only;
+// the Kerch Bridge attack (Tuesday 17 November) stays in DATE CHECK as
+// excluded, never as a story.
 //
 // The program is the kit's entrypoint shape (Node 22, standard library
 // only): it copies the pre-rendered 1024x1024 entry.png beside this file

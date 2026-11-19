@@ -2,90 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The World in One Day — Thursday 19 November 2026</title>
+<title>The Evening Atlas — Thursday 19 November 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1024px; height: 1024px; }
   body {
-    background: #f6f1e3;
-    color: #1d1a14;
+    background: #0f1c30;
+    color: #f2e9d8;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px 26px 8px 26px;
     display: flex;
     flex-direction: column;
   }
 
-  /* ---------- top bar + headline: bigger and left-aligned, like the top page ---------- */
+  /* ---------- top bar + headline: the evening edition ---------- */
   .topbar { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 3px; }
-  .topbar .left { font-size: 12px; font-weight: bold; letter-spacing: 3px; color: #b3261e; }
-  .topbar .right { font-size: 11px; font-weight: bold; letter-spacing: 1.5px; color: #1d1a14; }
-  .rule { flex: 0 0 auto; height: 2px; background: #1d1a14; margin-bottom: 4px; }
+  .topbar .left { font-size: 12px; font-weight: bold; letter-spacing: 3px; color: #e8b64c; }
+  .topbar .right { font-size: 11px; font-weight: bold; letter-spacing: 1.5px; color: #f2e9d8; }
+  .rule { flex: 0 0 auto; height: 2px; background: #e8b64c; margin-bottom: 4px; }
   h1.date {
     flex: 0 0 auto;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 56px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
-    text-align: left; margin: 3px 0 4px 0;
+    font-size: 52px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
+    text-align: left; margin: 2px 0 3px 0; color: #f2e9d8;
   }
   .subhead {
     flex: 0 0 auto; text-align: left;
     font-family: Georgia, "Times New Roman", serif; font-style: italic;
-    font-size: 15px; color: #b3261e; padding-bottom: 4px;
-    border-bottom: 1px solid rgba(29,26,20,0.45);
+    font-size: 15px; color: #e87a6d; padding-bottom: 4px;
+    border-bottom: 1px solid rgba(242,233,216,0.35);
   }
 
   /* ---------- region strip ---------- */
-  .regions { flex: 0 0 auto; display: flex; height: 20px; margin-top: 6px; }
-  .regions div { display: flex; align-items: center; justify-content: center; color: #f7efdd; font-size: 9.5px; font-weight: bold; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; min-width: 0; }
+  .regions { flex: 0 0 auto; display: flex; height: 18px; margin-top: 6px; }
+  .regions div { display: flex; align-items: center; justify-content: center; color: #0f1c30; font-size: 9.5px; font-weight: bold; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; min-width: 0; }
 
-  /* ---------- by the numbers ---------- */
-  .numbers { flex: 0 0 auto; display: flex; gap: 14px; padding: 3px 0 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
+  /* ---------- by the numbers: gold on navy ---------- */
+  .numbers { flex: 0 0 auto; display: flex; gap: 14px; padding: 2px 0 3px 0; border-bottom: 1px solid rgba(242,233,216,0.35); }
   .ncell { flex: 1 1 0; min-width: 0; }
-  .ncell .big { font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 900; line-height: 1; color: #b3261e; white-space: nowrap; }
-  .ncell .lbl { font-size: 9.5px; line-height: 1.2; margin-top: 3px; color: #3a372f; }
+  .ncell .big { font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 900; line-height: 1; color: #f9d976; white-space: nowrap; }
+  .ncell .lbl { font-size: 9.5px; line-height: 1.2; margin-top: 3px; color: #c9d2de; }
 
-  /* ---------- heroes: taller art (112px), more pictorial hero 2 ---------- */
-  .hero { flex: 0 0 auto; display: flex; gap: 18px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
-  .hero article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
+  /* ---------- the day by hours: the one strip the old page never had ---------- */
+  .hours { flex: 0 0 auto; display: flex; gap: 0; padding: 3px 0; border-bottom: 1px solid rgba(242,233,216,0.35); }
+  .hours .hlabel { flex: 0 0 auto; font-size: 9.5px; font-weight: bold; letter-spacing: 1.5px; color: #e8b64c; padding-right: 10px; white-space: nowrap; }
+  .hours .slot { flex: 1 1 0; min-width: 0; padding: 0 8px; border-left: 1px solid rgba(242,233,216,0.25); font-size: 9px; line-height: 1.25; color: #c9d2de; }
+  .hours .slot b { color: #f9d976; }
+
+  /* ---------- heroes: tall pictorial art, cream headlines on navy ---------- */
+  .hero { flex: 0 0 auto; display: flex; gap: 18px; padding: 5px 0; border-bottom: 1px solid rgba(242,233,216,0.35); }
+  .hero article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #e8b64c); padding-top: 4px; }
   .hero svg { display: block; }
-  .cat { display: flex; justify-content: space-between; white-space: nowrap; font-size: 10px; font-weight: bold; letter-spacing: 0.5px; color: #b3261e; text-transform: uppercase; margin: 5px 0 3px 0; }
-  .hero h3 { font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.12; font-weight: 900; margin-bottom: 4px; }
-  .hero p { font-size: 11px; line-height: 1.35; color: #3a372f; }
+  .cat { display: flex; justify-content: space-between; white-space: nowrap; font-size: 10px; font-weight: bold; letter-spacing: 0.5px; color: #e8b64c; text-transform: uppercase; margin: 5px 0 3px 0; }
+  .hero h3 { font-family: Georgia, "Times New Roman", serif; font-size: 16px; line-height: 1.12; font-weight: 900; margin-bottom: 4px; color: #f2e9d8; }
+  .hero p { font-size: 11px; line-height: 1.35; color: #c9d2de; }
   .numc {
     display: inline-block; width: 16px; height: 16px; border-radius: 50%;
-    background: #b3261e; color: #f7efdd; font-size: 11px; font-weight: bold;
+    background: #e05252; color: #f2e9d8; font-size: 11px; font-weight: bold;
     text-align: center; line-height: 16px; margin-right: 4px; vertical-align: 1px;
   }
 
-  /* ---------- medium cards, 5 per row: taller art (56px), two-line bodies ---------- */
-  .row5 { flex: 0 0 auto; display: flex; gap: 15px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
-  .row5 article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
+  /* ---------- medium cards, 5 per row ---------- */
+  .row5 { flex: 0 0 auto; display: flex; gap: 15px; padding: 4px 0; border-bottom: 1px solid rgba(242,233,216,0.35); }
+  .row5 article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #e8b64c); padding-top: 4px; }
   .row5 svg { display: block; }
   .row5 .cat { font-size: 9px; letter-spacing: 0.3px; }
-  .row5 h3 { font-family: Georgia, "Times New Roman", serif; font-size: 13px; line-height: 1.15; font-weight: 900; margin-bottom: 3px; }
-  .row5 p { font-size: 10.5px; line-height: 1.3; color: #3a372f; }
+  .row5 h3 { font-family: Georgia, "Times New Roman", serif; font-size: 12px; line-height: 1.15; font-weight: 900; margin-bottom: 3px; color: #f2e9d8; }
+  .row5 p { font-size: 10px; line-height: 1.3; color: #c9d2de; }
 
-  /* ---------- map + briefs ---------- */
-  .bottom { flex: 1 1 auto; display: flex; gap: 18px; padding: 6px 0 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); min-height: 0; }
+  /* ---------- bottom: dotted-gold map + verdict + briefs ---------- */
+  .bottom { flex: 1 1 auto; display: flex; gap: 18px; padding: 4px 0 3px 0; border-bottom: 1px solid rgba(242,233,216,0.35); min-height: 0; }
   .mapbox { flex: 0 0 330px; }
-  .brief-head { font-size: 12px; font-weight: bold; letter-spacing: 2px; color: #b3261e; text-transform: uppercase; margin-bottom: 4px; }
+  .brief-head { font-size: 12px; font-weight: bold; letter-spacing: 2px; color: #e8b64c; text-transform: uppercase; margin-bottom: 2px; }
   .mapbox svg { display: block; }
   .briefs { flex: 1 1 0; min-width: 0; }
+  .verdict { border: 1px solid #e8b64c; padding: 5px 8px; margin-bottom: 6px; font-size: 10.5px; line-height: 1.3; color: #f2e9d8; }
+  .verdict b { color: #f9d976; letter-spacing: 1px; }
   .brief-grid { display: flex; gap: 14px; }
   .bcol { flex: 1 1 0; min-width: 0; }
-  .bitem { font-size: 9px; line-height: 1.18; margin-bottom: 1px; }
-  .bitem b { font-weight: bold; }
-  .bitem .n { color: #b3261e; font-weight: bold; }
+  .bitem { font-size: 8.5px; line-height: 1.08; margin-bottom: 1px; color: #c9d2de; }
+  .bitem b { font-weight: bold; color: #f2e9d8; }
+  .bitem .n { color: #e87a6d; font-weight: bold; }
 
   /* ---------- date check + footer ---------- */
-  .datecheck { flex: 0 0 auto; border-top: 2px solid #b3261e; margin-top: 4px; padding: 4px 0 3px 0; font-size: 10px; line-height: 1.3; }
-  .datecheck .dclabel { display: inline-block; background: #b3261e; color: #f7efdd; font-weight: bold; letter-spacing: 1.5px; padding: 1px 6px; margin-right: 6px; }
-  .footer { flex: 0 0 auto; padding-top: 3px; font-size: 10px; line-height: 1.3; text-align: center; color: #3a372f; }
+  .datecheck { flex: 0 0 auto; border-top: 2px solid #e05252; margin-top: 4px; padding: 4px 0 3px 0; font-size: 10px; line-height: 1.3; color: #f2e9d8; }
+  .datecheck .dclabel { display: inline-block; background: #e05252; color: #f2e9d8; font-weight: bold; letter-spacing: 1.5px; padding: 1px 6px; margin-right: 6px; }
+  .footer { flex: 0 0 auto; padding-top: 3px; font-size: 10px; line-height: 1.3; text-align: center; color: #93a3b8; }
 </style>
 </head>
 <body>
 
   <div class="topbar">
-    <span class="left">THE WORLD IN ONE DAY</span>
+    <span class="left">THE WORLD IN ONE DAY &middot; EVENING EDITION</span>
     <span class="right">THURSDAY&rsquo;S NEWS &middot; ONE PAGE &middot; 36 STORIES</span>
   </div>
   <div class="rule"></div>
@@ -93,13 +101,13 @@
   <div class="subhead">Three leaders meet in Shenzhen &middot; GTA VI unlocks worldwide &middot; The biggest IPO ever debuts</div>
 
   <div class="regions">
-    <div style="flex:5;background:#2e5a9b">EUROPE 5</div>
-    <div style="flex:11;background:#4a7c59">THE AMERICAS 11</div>
-    <div style="flex:8;background:#c98a1b">ASIA-PACIFIC 8</div>
-    <div style="flex:5;background:#b3261e">MIDEAST 5</div>
-    <div style="flex:3;background:#8a6d3b">AFRICA 3</div>
-    <div style="flex:2;background:#2e5a6b">OCEANIA 2</div>
-    <div style="flex:2;background:#6b675c">WORLD 2</div>
+    <div style="flex:5;background:#5b8fd6">EUROPE 5</div>
+    <div style="flex:11;background:#6fae7e">THE AMERICAS 11</div>
+    <div style="flex:8;background:#e0a83c">ASIA-PACIFIC 8</div>
+    <div style="flex:5;background:#d9534f">MIDEAST 5</div>
+    <div style="flex:3;background:#b08d57">AFRICA 3</div>
+    <div style="flex:2;background:#4a9aa8">OCEANIA 2</div>
+    <div style="flex:2;background:#8a8578">WORLD 2</div>
   </div>
 
   <div class="numbers">
@@ -111,10 +119,22 @@
     <div class="ncell"><div class="big">16bn miles</div><div class="lbl">Voyager 1 from Earth &mdash; one light-day out</div></div>
   </div>
 
-  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO — flat art, taller and more pictorial -->
+  <!-- THE DAY BY HOURS: local time, in order — the strip the old page never had -->
+  <div class="hours">
+    <span class="hlabel">THE DAY BY HOURS</span>
+    <div class="slot"><b>00:00 AUCKLAND</b><br>GTA VI unlocks</div>
+    <div class="slot"><b>04:42 RIYADH</b><br>air-raid sirens</div>
+    <div class="slot"><b>08:40 SEOUL</b><br>exam begins</div>
+    <div class="slot"><b>09:30 JAKARTA</b><br>law passed</div>
+    <div class="slot"><b>10:00 THE HAGUE</b><br>genocide ruling</div>
+    <div class="slot"><b>P.M. SHENZHEN</b><br>three leaders meet</div>
+    <div class="slot"><b>09:30 NEW YORK</b><br>market opens</div>
+  </div>
+
+  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO -->
   <section class="hero">
-    <article style="--c:#b3261e">
-      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#e05252">
+      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#dfe8f2"/>
         <circle cx="286" cy="24" r="17" fill="#e05252"/>
         <g>
@@ -144,7 +164,7 @@
       <p>Three nuclear powers meet at APEC; arms control and the Iran war top the agenda.</p>
     </article>
     <article style="--c:#7b2d8b">
-      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#7b2d8b"/>
         <circle cx="158" cy="92" r="34" fill="#ffd27a"/>
         <g fill="#2a0a3e">
@@ -171,7 +191,7 @@
       <p>Unlocks at midnight everywhere, NZ first; 15.9m pre-orders. $79.99, no PC yet.</p>
     </article>
     <article style="--c:#0d5c3f">
-      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#0d3b2e"/>
         <text x="10" y="26" font-family="Arial" font-size="18" font-weight="bold" fill="#f7efdd" letter-spacing="1">ANT</text>
         <text x="158" y="26" font-family="Arial" font-size="9" font-weight="bold" fill="#f7efdd" text-anchor="middle" letter-spacing="0.5">NASDAQ &middot; FIRST TRADES TODAY</text>
@@ -195,8 +215,8 @@
 
   <!-- CARDS 4-8 — one motif per strip, no text inside the art -->
   <section class="row5">
-    <article style="--c:#2e5a9b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#5b8fd6">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
         <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1">
           <path d="M92 8 L168 40 L16 40 Z" fill="#c98a1b"/>
@@ -210,8 +230,8 @@
       <h3>World Court rules on Myanmar&rsquo;s Rohingya case</h3>
       <p>The ICJ reads its judgment in The Gambia&rsquo;s case &mdash; final, with no appeal.</p>
     </article>
-    <article style="--c:#4a7c59">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#6fae7e">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dcebf2"/>
         <circle cx="152" cy="14" r="11" fill="#f9d976"/>
         <path d="M0 52 L40 22 L76 52 Z" fill="#8a97a3"/>
@@ -224,7 +244,7 @@
       <p>Ministers take over the text; &ldquo;phase out&rdquo; and the $120bn fund stay open.</p>
     </article>
     <article style="--c:#1d5a8a">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#0d2b4a"/>
         <path d="M92 34 m0 -24 a24 24 0 1 1 -24 24 a17 17 0 1 1 17 -17 a10 10 0 1 1 -10 10" fill="none" stroke="#f7efdd" stroke-width="4"/>
         <circle cx="92" cy="34" r="5" fill="#f9d976"/>
@@ -233,8 +253,8 @@
       <h3>Akvan bears down as 200,000 flee the coast</h3>
       <p>Red alerts in 11 districts, schools shut. Landfall near Puri due Friday.</p>
     </article>
-    <article style="--c:#2e5a9b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#5b8fd6">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="36" fill="#2e5a9b"/>
         <rect x="0" y="36" width="185" height="36" fill="#f2d54b"/>
         <g fill="#1d1a14">
@@ -249,8 +269,8 @@
       <h3>Left off the agenda, Ukraine watches Shenzhen</h3>
       <p>The war will not be raised at the summit, the White House says.</p>
     </article>
-    <article style="--c:#c98a1b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#e0a83c">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#3a2c1c"/>
         <g>
           <rect x="14" y="28" width="18" height="16" fill="#b3261e"/><rect x="38" y="28" width="18" height="16" fill="#2e5a9b"/>
@@ -268,7 +288,7 @@
   <!-- CARDS 9-13 — one motif per strip, no text inside the art -->
   <section class="row5">
     <article style="--c:#1d5a8a">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#cfdde8"/>
         <ellipse cx="62" cy="22" rx="32" ry="12" fill="#8a97a3"/>
         <ellipse cx="92" cy="15" rx="22" ry="10" fill="#a8b4bd"/>
@@ -284,8 +304,8 @@
       <h3>Flooded Florida braces for still more rain</h3>
       <p>A foot of rain in Hollywood, 300 rescue calls in a night; schools shut.</p>
     </article>
-    <article style="--c:#8a6d3b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#b08d57">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#e8ddc4"/>
         <rect x="0" y="10" width="185" height="13" fill="#8a6d3b"/><rect x="0" y="23" width="185" height="13" fill="#a8875a"/>
         <rect x="0" y="36" width="185" height="13" fill="#c9a86a"/><rect x="0" y="49" width="185" height="23" fill="#7a5a3a"/>
@@ -298,8 +318,8 @@
       <h3>Earth&rsquo;s missing billion years are explained</h3>
       <p>A Nature study blames mantle currents and ancient ice sheets.</p>
     </article>
-    <article style="--c:#2e5a9b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#5b8fd6">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="16" y="6" width="50" height="60" fill="#2e5a9b"/>
         <rect x="66" y="6" width="50" height="60" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.5"/>
         <rect x="116" y="6" width="50" height="60" fill="#b3261e"/>
@@ -313,8 +333,8 @@
       <h3>M&eacute;lenchon could win, says France&rsquo;s justice minister</h3>
       <p>The hard-left leader is a plausible president, the minister concedes.</p>
     </article>
-    <article style="--c:#c98a1b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#e0a83c">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#a8543a"/>
         <circle cx="146" cy="16" r="10" fill="#f9d976"/>
         <g fill="#2a1a2e">
@@ -328,8 +348,8 @@
       <h3>Saudi Arabia says danger has passed in three cities</h3>
       <p>The all-clear follows southern alerts after a Houthi missile was downed.</p>
     </article>
-    <article style="--c:#8a6d3b">
-      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <article style="--c:#b08d57">
+      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
         <g stroke="#1d1a14" stroke-width="0.5">
           <rect x="52" y="18" width="20" height="16" fill="#b3261e"/><rect x="74" y="18" width="20" height="16" fill="#2e5a9b"/>
@@ -344,28 +364,33 @@
     </article>
   </section>
 
-  <!-- BOTTOM: map with heading + caption inside the navy box, red pins for 1-13, grey dots for the briefs -->
+  <!-- BOTTOM: dotted-gold world map + THE VERDICT + 23 briefs -->
   <section class="bottom">
     <div class="mapbox">
       <svg width="330" height="186" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="0" width="640" height="360" fill="#16294a"/>
-        <g stroke="#f7efdd" stroke-opacity="0.08" stroke-width="1">
+        <defs>
+          <pattern id="golddots" width="11" height="11" patternUnits="userSpaceOnUse">
+            <circle cx="5.5" cy="5.5" r="2.6" fill="#d9b36a"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="640" height="360" fill="#152a47"/>
+        <g stroke="#f2e9d8" stroke-opacity="0.08" stroke-width="1">
           <line x1="80" y1="0" x2="80" y2="360"/><line x1="160" y1="0" x2="160" y2="360"/><line x1="240" y1="0" x2="240" y2="360"/>
           <line x1="320" y1="0" x2="320" y2="360"/><line x1="400" y1="0" x2="400" y2="360"/><line x1="480" y1="0" x2="480" y2="360"/>
           <line x1="560" y1="0" x2="560" y2="360"/>
           <line x1="0" y1="72" x2="640" y2="72"/><line x1="0" y1="120" x2="640" y2="120"/><line x1="0" y1="168" x2="640" y2="168"/>
           <line x1="0" y1="216" x2="640" y2="216"/><line x1="0" y1="264" x2="640" y2="264"/><line x1="0" y1="312" x2="640" y2="312"/>
         </g>
-        <text x="16" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#f7efdd" letter-spacing="2">WHERE IT HAPPENED</text>
-        <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#f7efdd" opacity="0.42" letter-spacing="3">
+        <text x="16" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#f2e9d8" letter-spacing="2">WHERE IT HAPPENED</text>
+        <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#f2e9d8" opacity="0.42" letter-spacing="3">
           <text x="52" y="239">PACIFIC</text>
           <text x="545" y="274">PACIFIC</text>
           <text x="228" y="199">ATLANTIC</text>
           <text x="425" y="224">INDIAN</text>
           <text x="300" y="40">ARCTIC</text>
         </g>
-        <!-- continents, drawn with real coastlines -->
-        <g fill="#e9dcbd">
+        <!-- continents, drawn with real coastlines, filled with gold dots -->
+        <g fill="url(#golddots)">
           <path d="M28 66 L58 54 L104 56 L146 50 L176 62 L198 76 L188 94 L168 108 L150 102 L142 116 L118 124 L96 118 L66 110 L44 92 L30 80 Z"/>
           <path d="M215 54 L240 48 L252 62 L235 72 L218 66 Z"/>
           <path d="M152 184 L182 188 L196 214 L186 244 L170 270 L156 254 L146 220 L150 196 Z"/>
@@ -381,7 +406,7 @@
           <path d="M612 268 L616 266 L618 272 L612 274 Z"/>
         </g>
         <!-- grey dots for the 23 briefs (14-36) -->
-        <g fill="#8a97a3">
+        <g fill="#7d8ea6">
           <circle cx="382" cy="132" r="3.5"/><circle cx="585" cy="259" r="3.5"/><circle cx="60" cy="86" r="3.5"/>
           <circle cx="578" cy="116" r="3.5"/><circle cx="355" cy="189" r="3.5"/><circle cx="130" cy="169" r="3.5"/>
           <circle cx="70" cy="122" r="3.5"/><circle cx="418" cy="136" r="3.5"/><circle cx="74" cy="126" r="3.5"/>
@@ -392,30 +417,30 @@
           <circle cx="150" cy="209" r="3.5"/><circle cx="566" cy="132" r="3.5"/>
         </g>
         <!-- story 10 is a science story: a grey numbered dot, like the top page -->
-        <circle cx="330" cy="269" r="9" fill="#8a97a3"/>
-        <text x="330" y="272.5" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#f7efdd" text-anchor="middle">10</text>
+        <circle cx="330" cy="269" r="9" fill="#7d8ea6"/>
+        <text x="330" y="272.5" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#f2e9d8" text-anchor="middle">10</text>
         <!-- compass -->
-        <g stroke="#f7efdd" stroke-opacity="0.8" fill="none" stroke-width="1.2">
+        <g stroke="#f2e9d8" stroke-opacity="0.8" fill="none" stroke-width="1.2">
           <circle cx="606" cy="322" r="13"/>
-          <path d="M606 310 L610 324 L606 320 L602 324 Z" fill="#f7efdd" stroke="none"/>
+          <path d="M606 310 L610 324 L606 320 L602 324 Z" fill="#f2e9d8" stroke="none"/>
         </g>
-        <text x="606" y="304" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#f7efdd" text-anchor="middle" opacity="0.8">N</text>
+        <text x="606" y="304" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#f2e9d8" text-anchor="middle" opacity="0.8">N</text>
         <!-- numbered pins for stories 1-13, spread for breathing room -->
-        <g font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#f7efdd" text-anchor="middle">
-          <circle cx="535" cy="122" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="535" y="127">1</text>
-          <circle cx="598" cy="242" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="598" y="247">2</text>
-          <circle cx="78" cy="106" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="78" y="111">3</text>
-          <circle cx="305" cy="92" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="305" y="97">4</text>
-          <circle cx="372" cy="130" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="372" y="135">5</text>
-          <circle cx="485" cy="142" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="485" y="147">6</text>
-          <circle cx="398" cy="98" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="398" y="103">7</text>
-          <circle cx="560" cy="142" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="560" y="147">8</text>
-          <circle cx="108" cy="136" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="108" y="141">9</text>
-          <circle cx="272" cy="116" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="272" y="121">11</text>
-          <circle cx="400" cy="146" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="400" y="151">12</text>
-          <circle cx="330" cy="152" r="13" fill="#b3261e" stroke="#f7efdd" stroke-width="1.5"/><text x="330" y="157">13</text>
+        <g font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#f2e9d8" text-anchor="middle">
+          <circle cx="535" cy="122" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="535" y="127">1</text>
+          <circle cx="598" cy="242" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="598" y="247">2</text>
+          <circle cx="78" cy="106" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="78" y="111">3</text>
+          <circle cx="305" cy="92" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="305" y="97">4</text>
+          <circle cx="372" cy="130" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="372" y="135">5</text>
+          <circle cx="485" cy="142" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="485" y="147">6</text>
+          <circle cx="398" cy="98" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="398" y="103">7</text>
+          <circle cx="560" cy="142" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="560" y="147">8</text>
+          <circle cx="108" cy="136" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="108" y="141">9</text>
+          <circle cx="272" cy="116" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="272" y="121">11</text>
+          <circle cx="400" cy="146" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="400" y="151">12</text>
+          <circle cx="330" cy="152" r="13" fill="#e05252" stroke="#f2e9d8" stroke-width="1.5"/><text x="330" y="157">13</text>
         </g>
-        <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#f7efdd">
+        <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#f2e9d8">
           <text x="16" y="336">Red numbers mark stories 1&ndash;13; grey dots mark the briefs below.</text>
           <text x="16" y="352">Positions are approximate.</text>
         </g>
@@ -423,6 +448,7 @@
     </div>
     <div class="briefs">
       <div class="brief-head">Also on Thursday 19 November &mdash; 23 more stories</div>
+      <div class="verdict"><b>THE VERDICT &mdash; THE HAGUE &middot; 10:00</b> &mdash; Myanmar committed genocide, 9 to 6.</div>
       <div class="brief-grid">
         <div class="bcol">
           <div class="bitem"><span class="n">14</span> <b>GAZA:</b> Israeli tanks cross the Yellow Line; Hamas calls it a truce breach.</div>
@@ -438,7 +464,7 @@
           <div class="bitem"><span class="n">22</span> <b>WASHINGTON:</b> Lu Yuming becomes the first Asian-American House Democratic chair.</div>
           <div class="bitem"><span class="n">23</span> <b>SEOUL:</b> 551,864 take Korea&rsquo;s Suneung college exam.</div>
           <div class="bitem"><span class="n">24</span> <b>BOGOT&Aacute;:</b> Colombia&rsquo;s unions strike over the &ldquo;Economic Rescue&rdquo; tax bill.</div>
-          <div class="bitem"><span class="n">25</span> <b>WASHINGTON:</b> Trump weighs a new Iran offensive, reports say; Iran denies claims.</div>
+          <div class="bitem"><span class="n">25</span> <b>WASHINGTON:</b> Trump weighs a new Iran offensive, reports say.</div>
           <div class="bitem"><span class="n">26</span> <b>MEXICO CITY:</b> Banxico minutes: board cut rates to 6.25% on a 3&ndash;2 vote.</div>
           <div class="bitem"><span class="n">27</span> <b>MOGADISHU:</b> Somalia accuses the UAE of secret military bases on its soil.</div>
           <div class="bitem"><span class="n">28</span> <b>FRANKFURT:</b> Deutsche Bank handled $682m in Epstein-linked deals.</div>
