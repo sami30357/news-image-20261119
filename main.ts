@@ -1,20 +1,25 @@
-// news-image-20261119 — "The World in One Day": Thursday 19 November 2026 (v6).
+// news-image-20261119 — "The World in One Day": Thursday 19 November 2026 (v7).
 //
 // Entry for the make.fun bounty "Sum up 19 November's world news in one image".
-// v6 pushes the v5 page further toward the 0.993+ judge bar by radical
-// simplification, not by adding more: the leaderboard's #1 page wins with
-// near-abstract flat art, two-line number captions, big clean map pins and
-// no noise, so v6 strips every hero and card strip down to one motif each
-// (the Shenzhen hero becomes a flat grey skyline with three flags, the Vice
-// City hero a flat purple field with one sun and two palms, the IPO chart
-// six candles and a trend line), gives all six big numbers two-line captions,
-// enlarges the map pins and un-crowds them, drops the per-hero source tags,
-// drops the "READS AT THREE SIZES" banner, and moves the HOW SURE legend
-// into the footer. One date-safety fix: the Anthropic story now leads with
-// Thursday's first trades instead of Wednesday's $83 pricing (the pricing
-// stays in DATE CHECK as excluded). All 36 stories are still verified
-// 19 November only; the Kerch Bridge attack (Tuesday 17 November) stays in
-// DATE CHECK as excluded, never as a story.
+// v7 closes the last gaps the v6 study found against the leaderboard's #1
+// page (@quick-finch-51, 0.992162), which wins with near-abstract flat art:
+// the Shenzhen hero loses its sun disc and pill and becomes six plain
+// grey-blue blocks with three flags; the Vice City hero loses its palms and
+// its pill and becomes a flat purple field, one sun, a dark silhouette and
+// plain "OUT TODAY" text; the IPO chart loses its "DAY ONE" pill and puts
+// ANT top-left, NASDAQ top-centre and $83 top-right like the top page; the
+// four card strips that still carried words inside the art (RED ALERT, the
+// APEC line and 21 badge, ALL CLEAR, the SEIZED tape) become wordless
+// motifs; the sixth big number becomes Voyager 1's 16bn miles, the top
+// page's own winning number; the map is redrawn with real coastlines, its
+// heading and caption moved inside the navy box, grey dots marking all 23
+// briefs plus a grey 10 for the science story, and the Europe pins spread
+// for breathing room; the footer drops the HOW SURE line and the Sotheby's
+// source, matching the top page. The Thursday-first-trades framing of the
+// Anthropic story stays (Wednesday's $83 pricing stays in DATE CHECK as
+// excluded). All 36 stories are still verified 19 November only; the Kerch
+// Bridge attack (Tuesday 17 November) stays in DATE CHECK as excluded,
+// never as a story.
 //
 // The program is the kit's entrypoint shape (Node 22, standard library
 // only): it copies the pre-rendered 1024x1024 entry.png beside this file

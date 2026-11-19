@@ -1,4 +1,4 @@
-// Render index.html to entry.png at exactly 1024x1024 (v6).
+// Render index.html to entry.png at exactly 1024x1024 (v7).
 //
 // The flow: start headless Chrome with remote debugging, open the local
 // index.html in a fresh target, pin the viewport to exactly 1024x1024
