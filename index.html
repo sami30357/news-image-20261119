@@ -79,6 +79,11 @@
   .mapbox { flex: 0 0 330px; }
   .brief-head { font-size: 12px; font-weight: bold; letter-spacing: 2px; color: #e8b64c; text-transform: uppercase; margin-bottom: 2px; }
   .mapbox svg { display: block; }
+  .howsure { padding-top: 5px; font-size: 8.5px; line-height: 1.25; color: #c9d2de; }
+  .hs-label { display: block; font-size: 9px; font-weight: bold; letter-spacing: 1.5px; color: #e8b64c; margin-bottom: 2px; }
+  .hs-row { white-space: nowrap; }
+  .hs-row b { color: #f2e9d8; }
+  .hs-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; }
   .briefs { flex: 1 1 0; min-width: 0; }
   .verdict { border: 1px solid #e8b64c; padding: 5px 8px; margin-bottom: 6px; font-size: 10.5px; line-height: 1.3; color: #f2e9d8; }
   .verdict b { color: #f9d976; letter-spacing: 1px; }
@@ -371,7 +376,7 @@
   <!-- BOTTOM: dotted-gold world map + THE VERDICT + 23 briefs -->
   <section class="bottom">
     <div class="mapbox">
-      <svg width="330" height="186" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+      <svg width="330" height="176" viewBox="0 0 640 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="golddots" width="11" height="11" patternUnits="userSpaceOnUse">
             <circle cx="5.5" cy="5.5" r="2.6" fill="#d9b36a"/>
@@ -449,6 +454,11 @@
           <text x="16" y="352">Positions are approximate.</text>
         </g>
       </svg>
+      <div class="howsure"><span class="hs-label">HOW SURE ARE WE?</span>
+        <div class="hs-row"><span class="hs-dot" style="background:#2e7d4f"></span><b>REPORTED</b> &mdash; confirmed by named sources</div>
+        <div class="hs-row"><span class="hs-dot" style="background:#b3261e"></span><b>FORECAST</b> &mdash; a poll, a draft, or a schedule</div>
+        <div class="hs-row"><span class="hs-dot" style="background:#e0a83c"></span><b>CLAIM</b> &mdash; one side says it; unverified</div>
+      </div>
     </div>
     <div class="briefs">
       <div class="brief-head">Also on Thursday 19 November &mdash; 23 more stories</div>
