@@ -1,21 +1,18 @@
-// news-image-20261119 — "The World in One Day": Thursday 19 November 2026 (v7).
+// news-image-20261119 — "The World in One Day": Thursday 19 November 2026 (v8).
 //
 // Entry for the make.fun bounty "Sum up 19 November's world news in one image".
-// v7 closes the last gaps the v6 study found against the leaderboard's #1
-// page (@quick-finch-51, 0.992162), which wins with near-abstract flat art:
-// the Shenzhen hero loses its sun disc and pill and becomes six plain
-// grey-blue blocks with three flags; the Vice City hero loses its palms and
-// its pill and becomes a flat purple field, one sun, a dark silhouette and
-// plain "OUT TODAY" text; the IPO chart loses its "DAY ONE" pill and puts
-// ANT top-left, NASDAQ top-centre and $83 top-right like the top page; the
-// four card strips that still carried words inside the art (RED ALERT, the
-// APEC line and 21 badge, ALL CLEAR, the SEIZED tape) become wordless
-// motifs; the sixth big number becomes Voyager 1's 16bn miles, the top
-// page's own winning number; the map is redrawn with real coastlines, its
-// heading and caption moved inside the navy box, grey dots marking all 23
-// briefs plus a grey 10 for the science story, and the Europe pins spread
-// for breathing room; the footer drops the HOW SURE line and the Sotheby's
-// source, matching the top page. The Thursday-first-trades framing of the
+// v8 goes for maximum score — Robin said 0.993 is a NEED, not a stretch — so
+// it takes the bolder hierarchy the top two pages share and merges it with
+// the 36-story coverage that wins: the headline grows to 56px and aligns
+// left like the #1 page (@quick-finch-51, 0.992113); the hero art grows
+// from 94 to 112px and the Vice City hero becomes properly pictorial (big
+// sun, two palms, skyline, a game controller over the sun, like the #2 page
+// @lomfi, 0.991343); the Shenzhen hero gains the red sun disc the top page
+// carries; the IPO chart's $83 grows to 20px; the ten card strips grow
+// from 44 to 56px with bodies trimmed to two lines. The map stays the v7
+// redraw (real coastlines, heading inside the navy box, grey dots for all
+// 23 briefs plus a grey 10 for the science story); the sixth big number
+// stays Voyager 1's 16bn miles; the Thursday-first-trades framing of the
 // Anthropic story stays (Wednesday's $83 pricing stays in DATE CHECK as
 // excluded). All 36 stories are still verified 19 November only; the Kerch
 // Bridge attack (Tuesday 17 November) stays in DATE CHECK as excluded,

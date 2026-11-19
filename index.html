@@ -15,7 +15,7 @@
     flex-direction: column;
   }
 
-  /* ---------- top bar + headline ---------- */
+  /* ---------- top bar + headline: bigger and left-aligned, like the top page ---------- */
   .topbar { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 3px; }
   .topbar .left { font-size: 12px; font-weight: bold; letter-spacing: 3px; color: #b3261e; }
   .topbar .right { font-size: 11px; font-weight: bold; letter-spacing: 1.5px; color: #1d1a14; }
@@ -23,27 +23,27 @@
   h1.date {
     flex: 0 0 auto;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 44px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
-    text-align: center; margin: 3px 0 4px 0;
+    font-size: 56px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
+    text-align: left; margin: 3px 0 4px 0;
   }
   .subhead {
-    flex: 0 0 auto; text-align: center;
+    flex: 0 0 auto; text-align: left;
     font-family: Georgia, "Times New Roman", serif; font-style: italic;
-    font-size: 15px; color: #b3261e; padding-bottom: 5px;
+    font-size: 15px; color: #b3261e; padding-bottom: 4px;
     border-bottom: 1px solid rgba(29,26,20,0.45);
   }
 
   /* ---------- region strip ---------- */
-  .regions { flex: 0 0 auto; display: flex; height: 22px; margin-top: 6px; }
+  .regions { flex: 0 0 auto; display: flex; height: 20px; margin-top: 6px; }
   .regions div { display: flex; align-items: center; justify-content: center; color: #f7efdd; font-size: 9.5px; font-weight: bold; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; min-width: 0; }
 
-  /* ---------- by the numbers (two-line captions, like the top page) ---------- */
+  /* ---------- by the numbers ---------- */
   .numbers { flex: 0 0 auto; display: flex; gap: 14px; padding: 3px 0 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
   .ncell { flex: 1 1 0; min-width: 0; }
-  .ncell .big { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 900; line-height: 1; color: #b3261e; white-space: nowrap; }
+  .ncell .big { font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 900; line-height: 1; color: #b3261e; white-space: nowrap; }
   .ncell .lbl { font-size: 9.5px; line-height: 1.2; margin-top: 3px; color: #3a372f; }
 
-  /* ---------- heroes ---------- */
+  /* ---------- heroes: taller art (112px), more pictorial hero 2 ---------- */
   .hero { flex: 0 0 auto; display: flex; gap: 18px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
   .hero article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
   .hero svg { display: block; }
@@ -56,7 +56,7 @@
     text-align: center; line-height: 16px; margin-right: 4px; vertical-align: 1px;
   }
 
-  /* ---------- medium cards, 5 per row ---------- */
+  /* ---------- medium cards, 5 per row: taller art (56px), two-line bodies ---------- */
   .row5 { flex: 0 0 auto; display: flex; gap: 15px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
   .row5 article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
   .row5 svg { display: block; }
@@ -72,14 +72,14 @@
   .briefs { flex: 1 1 0; min-width: 0; }
   .brief-grid { display: flex; gap: 14px; }
   .bcol { flex: 1 1 0; min-width: 0; }
-  .bitem { font-size: 9px; line-height: 1.2; margin-bottom: 1.5px; }
+  .bitem { font-size: 9px; line-height: 1.18; margin-bottom: 1px; }
   .bitem b { font-weight: bold; }
   .bitem .n { color: #b3261e; font-weight: bold; }
 
   /* ---------- date check + footer ---------- */
-  .datecheck { flex: 0 0 auto; border-top: 2px solid #b3261e; margin-top: 4px; padding: 5px 0 3px 0; font-size: 10.5px; line-height: 1.35; }
+  .datecheck { flex: 0 0 auto; border-top: 2px solid #b3261e; margin-top: 4px; padding: 4px 0 3px 0; font-size: 10px; line-height: 1.3; }
   .datecheck .dclabel { display: inline-block; background: #b3261e; color: #f7efdd; font-weight: bold; letter-spacing: 1.5px; padding: 1px 6px; margin-right: 6px; }
-  .footer { flex: 0 0 auto; padding-top: 4px; font-size: 10.5px; line-height: 1.35; text-align: center; color: #3a372f; }
+  .footer { flex: 0 0 auto; padding-top: 3px; font-size: 10px; line-height: 1.3; text-align: center; color: #3a372f; }
 </style>
 </head>
 <body>
@@ -111,11 +111,12 @@
     <div class="ncell"><div class="big">16bn miles</div><div class="lbl">Voyager 1 from Earth &mdash; one light-day out</div></div>
   </div>
 
-  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO — plain flat art, no pills, no extra motifs -->
+  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO — flat art, taller and more pictorial -->
   <section class="hero">
     <article style="--c:#b3261e">
-      <svg width="316" height="94" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#dfe8f2"/>
+        <circle cx="286" cy="24" r="17" fill="#e05252"/>
         <g>
           <rect x="0" y="58" width="36" height="46" fill="#7a8794"/>
           <rect x="42" y="42" width="28" height="62" fill="#5a6570"/>
@@ -143,16 +144,25 @@
       <p>Three nuclear powers meet at APEC; arms control and the Iran war top the agenda.</p>
     </article>
     <article style="--c:#7b2d8b">
-      <svg width="316" height="94" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#7b2d8b"/>
-        <circle cx="158" cy="96" r="28" fill="#ffd27a"/>
+        <circle cx="158" cy="92" r="34" fill="#ffd27a"/>
         <g fill="#2a0a3e">
           <rect x="0" y="78" width="22" height="26"/><rect x="28" y="66" width="16" height="38"/>
           <rect x="50" y="82" width="18" height="22"/><rect x="74" y="70" width="14" height="34"/>
           <rect x="230" y="72" width="16" height="32"/><rect x="252" y="64" width="16" height="40"/>
           <rect x="274" y="80" width="18" height="24"/><rect x="298" y="70" width="18" height="34"/>
         </g>
+        <g stroke="#2a0a3e" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M96 104 Q92 78 84 62"/>
+          <path d="M84 62 Q70 54 58 60"/><path d="M84 62 Q78 48 66 44"/><path d="M84 62 Q92 46 104 42"/><path d="M84 62 Q98 52 110 56"/>
+          <path d="M222 104 Q226 78 234 62"/>
+          <path d="M234 62 Q248 54 260 60"/><path d="M234 62 Q240 48 252 44"/><path d="M234 62 Q226 46 214 42"/><path d="M234 62 Q220 52 208 56"/>
+        </g>
         <rect x="0" y="104" width="316" height="28" fill="#1d0a2e"/>
+        <rect x="126" y="96" width="64" height="26" rx="12" fill="#1d0a2e" stroke="#f7efdd" stroke-width="1.5"/>
+        <path d="M140 103 L140 115 M134 109 L146 109" stroke="#f7efdd" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="170" cy="106" r="3" fill="#ff7ad9"/><circle cx="179" cy="113" r="3" fill="#ffd27a"/>
         <text x="10" y="20" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#f7efdd" letter-spacing="2">OUT TODAY</text>
         <text x="158" y="40" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#ff7ad9" text-anchor="middle" letter-spacing="4">VICE CITY</text>
       </svg>
@@ -161,11 +171,11 @@
       <p>Unlocks at midnight everywhere, NZ first; 15.9m pre-orders. $79.99, no PC yet.</p>
     </article>
     <article style="--c:#0d5c3f">
-      <svg width="316" height="94" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="112" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#0d3b2e"/>
-        <text x="10" y="24" font-family="Arial" font-size="16" font-weight="bold" fill="#f7efdd" letter-spacing="1">ANT</text>
-        <text x="158" y="24" font-family="Arial" font-size="9" font-weight="bold" fill="#f7efdd" text-anchor="middle" letter-spacing="0.5">NASDAQ &middot; FIRST TRADES TODAY</text>
-        <text x="306" y="24" font-family="Arial" font-size="16" font-weight="bold" fill="#ffd27a" text-anchor="end">$83</text>
+        <text x="10" y="26" font-family="Arial" font-size="18" font-weight="bold" fill="#f7efdd" letter-spacing="1">ANT</text>
+        <text x="158" y="26" font-family="Arial" font-size="9" font-weight="bold" fill="#f7efdd" text-anchor="middle" letter-spacing="0.5">NASDAQ &middot; FIRST TRADES TODAY</text>
+        <text x="306" y="26" font-family="Arial" font-size="20" font-weight="bold" fill="#ffd27a" text-anchor="end">$83</text>
         <g>
           <line x1="40" y1="102" x2="40" y2="84" stroke="#e05252" stroke-width="2"/><rect x="33" y="86" width="14" height="14" fill="#e05252"/>
           <line x1="90" y1="94" x2="90" y2="72" stroke="#37c978" stroke-width="2"/><rect x="83" y="76" width="14" height="14" fill="#37c978"/>
@@ -186,7 +196,7 @@
   <!-- CARDS 4-8 — one motif per strip, no text inside the art -->
   <section class="row5">
     <article style="--c:#2e5a9b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
         <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1">
           <path d="M92 8 L168 40 L16 40 Z" fill="#c98a1b"/>
@@ -201,7 +211,7 @@
       <p>The ICJ reads its judgment in The Gambia&rsquo;s case &mdash; final, with no appeal.</p>
     </article>
     <article style="--c:#4a7c59">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dcebf2"/>
         <circle cx="152" cy="14" r="11" fill="#f9d976"/>
         <path d="M0 52 L40 22 L76 52 Z" fill="#8a97a3"/>
@@ -214,7 +224,7 @@
       <p>Ministers take over the text; &ldquo;phase out&rdquo; and the $120bn fund stay open.</p>
     </article>
     <article style="--c:#1d5a8a">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#0d2b4a"/>
         <path d="M92 34 m0 -24 a24 24 0 1 1 -24 24 a17 17 0 1 1 17 -17 a10 10 0 1 1 -10 10" fill="none" stroke="#f7efdd" stroke-width="4"/>
         <circle cx="92" cy="34" r="5" fill="#f9d976"/>
@@ -224,7 +234,7 @@
       <p>Red alerts in 11 districts, schools shut. Landfall near Puri due Friday.</p>
     </article>
     <article style="--c:#2e5a9b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="36" fill="#2e5a9b"/>
         <rect x="0" y="36" width="185" height="36" fill="#f2d54b"/>
         <g fill="#1d1a14">
@@ -240,7 +250,7 @@
       <p>The war will not be raised at the summit, the White House says.</p>
     </article>
     <article style="--c:#c98a1b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#3a2c1c"/>
         <g>
           <rect x="14" y="28" width="18" height="16" fill="#b3261e"/><rect x="38" y="28" width="18" height="16" fill="#2e5a9b"/>
@@ -258,7 +268,7 @@
   <!-- CARDS 9-13 — one motif per strip, no text inside the art -->
   <section class="row5">
     <article style="--c:#1d5a8a">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#cfdde8"/>
         <ellipse cx="62" cy="22" rx="32" ry="12" fill="#8a97a3"/>
         <ellipse cx="92" cy="15" rx="22" ry="10" fill="#a8b4bd"/>
@@ -275,7 +285,7 @@
       <p>A foot of rain in Hollywood, 300 rescue calls in a night; schools shut.</p>
     </article>
     <article style="--c:#8a6d3b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#e8ddc4"/>
         <rect x="0" y="10" width="185" height="13" fill="#8a6d3b"/><rect x="0" y="23" width="185" height="13" fill="#a8875a"/>
         <rect x="0" y="36" width="185" height="13" fill="#c9a86a"/><rect x="0" y="49" width="185" height="23" fill="#7a5a3a"/>
@@ -289,7 +299,7 @@
       <p>A Nature study blames mantle currents and ancient ice sheets.</p>
     </article>
     <article style="--c:#2e5a9b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="16" y="6" width="50" height="60" fill="#2e5a9b"/>
         <rect x="66" y="6" width="50" height="60" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.5"/>
         <rect x="116" y="6" width="50" height="60" fill="#b3261e"/>
@@ -304,7 +314,7 @@
       <p>The hard-left leader is a plausible president, the minister concedes.</p>
     </article>
     <article style="--c:#c98a1b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#a8543a"/>
         <circle cx="146" cy="16" r="10" fill="#f9d976"/>
         <g fill="#2a1a2e">
@@ -319,7 +329,7 @@
       <p>The all-clear follows southern alerts after a Houthi missile was downed.</p>
     </article>
     <article style="--c:#8a6d3b">
-      <svg width="185" height="44" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="56" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
         <g stroke="#1d1a14" stroke-width="0.5">
           <rect x="52" y="18" width="20" height="16" fill="#b3261e"/><rect x="74" y="18" width="20" height="16" fill="#2e5a9b"/>
