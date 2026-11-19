@@ -1,10 +1,10 @@
-// Render index.html to entry.png at exactly 1024x1024.
+// Render index.html to entry.png at exactly 1024x1024 (v3).
 //
-// How it works: launch headless Chrome with remote debugging, open the
-// local index.html in a fresh target, force the viewport to exactly
-// 1024x1024 with Emulation.setDeviceMetricsOverride (so the capture does
-// not depend on window chrome or scrollbars), wait until the document is
-// fully laid out at the right size, then take a PNG screenshot.
+// The flow: start headless Chrome with remote debugging, open the local
+// index.html in a fresh target, pin the viewport to exactly 1024x1024
+// with Emulation.setDeviceMetricsOverride (so the capture never depends
+// on window chrome or scrollbars), wait until the document is complete
+// and laid out at that size, then take a PNG screenshot.
 //
 // Node's built-in WebSocket client talks CDP directly — no dependencies.
 // Run from the repo directory; writes ./entry.png next to index.html.
@@ -50,11 +50,11 @@ class CdpClient {
     this.waiting = new Map();
     this.socket.onmessage = (event) => {
       const msg = JSON.parse(event.data);
-      const entry = this.waiting.get(msg.id);
-      if (!entry) return;
+      const pending = this.waiting.get(msg.id);
+      if (!pending) return;
       this.waiting.delete(msg.id);
-      if (msg.error) entry.reject(new Error(JSON.stringify(msg.error)));
-      else entry.resolve(msg.result);
+      if (msg.error) pending.reject(new Error(JSON.stringify(msg.error)));
+      else pending.resolve(msg.result);
     };
   }
 
@@ -97,7 +97,7 @@ class CdpClient {
 
 // --- Chrome lifecycle ---
 function launchChrome() {
-  const chrome = spawn(
+  return spawn(
     CHROME_BIN,
     [
       '--headless=new',
@@ -119,7 +119,6 @@ function launchChrome() {
     ],
     { stdio: 'ignore' },
   );
-  return chrome;
 }
 
 async function waitForDevTools(tries = 40, delayMs = 500) {
@@ -134,64 +133,72 @@ async function waitForDevTools(tries = 40, delayMs = 500) {
   throw new Error('Chrome DevTools did not come up');
 }
 
-// --- The render ---
-async function render() {
+// Wait until the document is complete and laid out at exactly 1024x1024.
+async function waitForLayout(cdp, tries = 60, delayMs = 250) {
+  for (let i = 0; i < tries; i++) {
+    const ready = await cdp.evaluate(
+      `document.readyState === 'complete' && document.body.scrollWidth === ${SIZE} && document.body.scrollHeight === ${SIZE}`,
+    );
+    if (ready) return;
+    await sleep(delayMs);
+  }
+  throw new Error('page did not settle at 1024x1024');
+}
+
+// --- The render: open the page in a fresh target, screenshot it ---
+async function capture() {
+  const target = await devtoolsJson(`/json/new?${encodeURIComponent(PAGE_URL)}`, 'PUT');
+  const cdp = new CdpClient(target.webSocketDebuggerUrl);
+  await cdp.connect();
+  try {
+    await cdp.send('Page.enable');
+    await cdp.send('Runtime.enable');
+
+    // Pin the viewport to exactly 1024x1024, no scrollbars.
+    await cdp.send('Emulation.setDeviceMetricsOverride', {
+      width: SIZE,
+      height: SIZE,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await cdp.send('Emulation.setScrollbarsHidden', { hidden: true });
+
+    await waitForLayout(cdp);
+    const dims = await cdp.evaluate(
+      '({ sw: document.body.scrollWidth, sh: document.body.scrollHeight, ih: document.documentElement.scrollHeight })',
+    );
+    console.log('page dims:', JSON.stringify(dims));
+
+    // Let fonts settle, then capture.
+    await sleep(800);
+    const shot = await cdp.send('Page.captureScreenshot', {
+      format: 'png',
+      captureBeyondViewport: true,
+    });
+    const png = Buffer.from(shot.data, 'base64');
+    writeFileSync(OUT_PATH, png);
+    console.log(`wrote ${OUT_PATH}: ${png.length} bytes`);
+  } finally {
+    cdp.close();
+    try {
+      await devtoolsJson(`/json/close/${target.id}`);
+    } catch {
+      // target already gone
+    }
+  }
+}
+
+async function main() {
   const chrome = launchChrome();
   try {
     await waitForDevTools();
-
-    const target = await devtoolsJson(`/json/new?${encodeURIComponent(PAGE_URL)}`, 'PUT');
-    const cdp = new CdpClient(target.webSocketDebuggerUrl);
-    await cdp.connect();
-    try {
-      await cdp.send('Page.enable');
-      await cdp.send('Runtime.enable');
-
-      // Pin the viewport to exactly 1024x1024, no scrollbars.
-      await cdp.send('Emulation.setDeviceMetricsOverride', {
-        width: SIZE,
-        height: SIZE,
-        deviceScaleFactor: 1,
-        mobile: false,
-      });
-      await cdp.send('Emulation.setScrollbarsHidden', { hidden: true });
-
-      // Wait until the document is complete and laid out at 1024x1024.
-      for (let i = 0; i < 60; i++) {
-        const ready = await cdp.evaluate(
-          `document.readyState === 'complete' && document.body.scrollWidth === ${SIZE} && document.body.scrollHeight === ${SIZE}`,
-        );
-        if (ready) break;
-        await sleep(250);
-      }
-      const dims = await cdp.evaluate(
-        '({ sw: document.body.scrollWidth, sh: document.body.scrollHeight, ih: document.documentElement.scrollHeight })',
-      );
-      console.log('page dims:', JSON.stringify(dims));
-
-      // Let fonts settle, then capture.
-      await sleep(800);
-      const shot = await cdp.send('Page.captureScreenshot', {
-        format: 'png',
-        captureBeyondViewport: true,
-      });
-      const png = Buffer.from(shot.data, 'base64');
-      writeFileSync(OUT_PATH, png);
-      console.log(`wrote ${OUT_PATH}: ${png.length} bytes`);
-    } finally {
-      cdp.close();
-      try {
-        await devtoolsJson(`/json/close/${target.id}`);
-      } catch {
-        // target already gone
-      }
-    }
+    await capture();
   } finally {
     chrome.kill('SIGKILL');
   }
 }
 
-render().catch((err) => {
+main().catch((err) => {
   console.error('FATAL:', err.message);
   process.exit(1);
 });

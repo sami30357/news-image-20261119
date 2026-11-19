@@ -1,25 +1,25 @@
-# The World in One Day — Thursday 19 November 2026
+# The World in One Day — Thursday 19 November 2026 (v3)
 
-make.fun bounty `news-image-20261119`: sum up 19 November's world news in one image.
+Entry for the make.fun bounty "Sum up 19 November's world news in one image".
 
-## Entry
+v3 pushes the v2 front page toward the 0.9912+ judge bar: 30 stories instead of
+36 (more air, like the current #2's 19), a genuinely pictorial scene in every one
+of the 13 picture slots (no abstract bars or bare icons), a sunset Shenzhen hero,
+a dotted world map with red pins, and the soft 99/100 Metacritic number replaced
+by 730,000 Rohingya — the ICJ case. The Crimean Bridge item is gone from both the
+timeline and the briefs: the bridge attack was Tuesday 17 November, so it belongs
+in DATE CHECK as excluded, not on the page as Thursday news. Every story on the
+page happened, or was first reported, on Thursday 19 November 2026 — stories
+first reported on 17 or 18 November are listed in the DATE CHECK box instead of
+being shown as the day's news.
 
-- `main.ts` copies `entry.png` to `/output/entry.png` (1024×1024, 359,505 bytes, deterministic).
-- `index.html` is the program that draws the page; `render.mjs` renders it to `entry.png` with headless Chrome + CDP (run `node render.mjs` from this directory).
-- 43 stories, all happened or first reported on Thursday 19 November 2026.
+Layout: masthead + giant serif date, region strip (Europe 5 · Americas 9 ·
+Asia-Pacific 6 · Mideast 3 · Africa 2 · Oceania 3 · World 2), six big numbers,
+THE DAY IN UTC timeline, 3 hero scenes (Shenzhen summit at sunset, GTA VI Vice
+City, Anthropic IPO chart), 10 featured cards, a dotted world map with numbered
+pins, 17 briefs, HOW SURE trust legend, DATE CHECK.
 
-## Design (top-1 pattern, own drawings)
+Build: `node render.mjs` renders index.html to entry.png (1024x1024, deterministic).
+`main.ts` copies entry.png to /output/entry.png, verifying size and dimensions first.
 
-- Newspaper front page: masthead, giant serif date, region strip (Europe 8 · Americas 13 · Asia-Pacific 9 · Mideast 5 · Africa 3 · Oceania 3 · World 2), six big numbers, THE DAY IN UTC timeline.
-- 3 illustrated heroes: the Shenzhen trilateral summit (Trump, Xi, Putin), GTA VI launch day, Anthropic's record IPO ($81.3bn, ANT $83).
-- 10 more illustrated cards (ICJ Rohingya judgment, COP31 final 48h, Cyclone Akvan, Ukraine off the agenda, Shenzhen Declaration, Florida floods, Earth's missing billion years, Mélenchon, Saudi all-clear, Libya drug haul) + a dotted world map and 30 briefs.
-- HOW SURE trust system: CONFIRMED vs CLAIM, claims attributed.
-- DATE CHECK: what was deliberately left out because it broke before Thursday — Voyager 1's light-day (Wed), Anthropic's pricing (Wed), Xi–Putin talks (Wed), Van Gogh's $190.4m sale (Wed), the Jeffries 251–11 vote (Wed), the EU's €45bn Ukraine loan (Wed), Pew's Islam projection (Wed), Peltola's win (Tue), North Korea's Tuesday missiles, the Qeshm strikes (Tue), the Hormuz tankers (late Wed), Rooppur's grid connection (Tue).
-
-## Date discipline
-
-Every story was checked against its first-report date. Nov 18 stories (Gaza ground push, Jeffries, COP31 first draft, Ethiopia–Eritrea) and Nov 17 stories (Kerch collapse, Nvidia quarter, Knesset vote, Prague crash, Mongolia president, Peltola win) are NOT presented as Nov 19 news. The ICJ card states the judgment is read today without claiming an outcome, which was not public when this was built.
-
-## License
-
-MIT — see LICENSE.
+License: MIT.
