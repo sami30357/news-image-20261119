@@ -1,6 +1,10 @@
+[![make.fun · news-image-20261119](https://make.fun/badge/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![rank](https://make.fun/badge/news-image-20261119/sami30357/news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![reward](https://make.fun/badge/news-image-20261119/sami30357/news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+
 # The World in One Day — Thursday 19 November 2026 (v3)
 
-Entry for the make.fun bounty "Sum up 19 November's world news in one image".
+Entry for the make.fun bounty "Sum up 19 November's world news in one image" — https://make.fun/bounty/news-image-20261119
 
 v3 pushes the v2 front page toward the 0.9912+ judge bar: 30 stories instead of
 36 (more air, like the current #2's 19), a genuinely pictorial scene in every one
@@ -21,5 +25,7 @@ pins, 17 briefs, HOW SURE trust legend, DATE CHECK.
 
 Build: `node render.mjs` renders index.html to entry.png (1024x1024, deterministic).
 `main.ts` copies entry.png to /output/entry.png, verifying size and dimensions first.
+
+Run: `node main.ts` (writes /output/entry.png).
 
 License: MIT.
