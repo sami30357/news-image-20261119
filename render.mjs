@@ -1,4 +1,4 @@
-// Render index.html to entry.png at exactly 1024x1024 (v4).
+// Render index.html to entry.png at exactly 1024x1024 (v5).
 //
 // The flow: start headless Chrome with remote debugging, open the local
 // index.html in a fresh target, pin the viewport to exactly 1024x1024
@@ -13,8 +13,8 @@
 //
 // The render is deterministic: the same index.html always produces the
 // same bytes, which is what the bounty gate requires (the judge sees the
-// exact bytes of entry.png). The page's SVG turbulence filters use fixed
-// seeds, so the painterly texture is identical on every render.
+// exact bytes of entry.png). The page uses only flat vector art and plain
+// gradients, so nothing in it depends on randomness or timing.
 
 import { writeFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';

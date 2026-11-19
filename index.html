@@ -13,11 +13,7 @@
     padding: 9px 26px 7px 26px;
     display: flex;
     flex-direction: column;
-    position: relative;
   }
-
-  /* paper grain over the whole page (fixed-seed noise: deterministic) */
-  .grain { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
 
   /* ---------- top bar + headline ---------- */
   .topbar { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 3px; }
@@ -27,13 +23,13 @@
   h1.date {
     flex: 0 0 auto;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 40px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
+    font-size: 44px; line-height: 1; font-weight: 900; letter-spacing: 0.5px;
     text-align: center; margin: 3px 0 4px 0;
   }
   .subhead {
     flex: 0 0 auto; text-align: center;
     font-family: Georgia, "Times New Roman", serif; font-style: italic;
-    font-size: 14.5px; color: #b3261e; padding-bottom: 4px;
+    font-size: 15px; color: #b3261e; padding-bottom: 4px;
     border-bottom: 1px solid rgba(29,26,20,0.45);
   }
 
@@ -47,17 +43,8 @@
   .ncell .big { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 900; line-height: 1; color: #b3261e; white-space: nowrap; }
   .ncell .lbl { font-size: 9.5px; line-height: 1.15; margin-top: 2px; color: #3a372f; }
 
-  /* ---------- the day in UTC ---------- */
-  .timeline { flex: 0 0 auto; display: flex; padding: 2px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
-  .tl-label { flex: 0 0 64px; background: #b3261e; color: #f7efdd; font-size: 9px; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2px 4px; line-height: 1.3; }
-  .tl-slots { flex: 1 1 0; display: flex; min-width: 0; }
-  .tl { flex: 1 1 0; min-width: 0; padding: 0 7px; border-left: 1px solid rgba(29,26,20,0.35); }
-  .tl:first-child { border-left: none; }
-  .tl .t { font-size: 9px; font-weight: bold; color: #b3261e; letter-spacing: 0.5px; white-space: nowrap; }
-  .tl .h { font-size: 9.5px; line-height: 1.25; color: #1d1a14; }
-
   /* ---------- heroes ---------- */
-  .hero { flex: 0 0 auto; display: flex; gap: 16px; padding: 3px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
+  .hero { flex: 0 0 auto; display: flex; gap: 16px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
   .hero article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
   .hero svg { display: block; }
   .cat { display: flex; justify-content: space-between; white-space: nowrap; font-size: 10px; font-weight: bold; letter-spacing: 0.5px; color: #b3261e; text-transform: uppercase; margin: 5px 0 3px 0; }
@@ -71,7 +58,7 @@
   }
 
   /* ---------- medium cards, 5 per row ---------- */
-  .row5 { flex: 0 0 auto; display: flex; gap: 13px; padding: 3px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
+  .row5 { flex: 0 0 auto; display: flex; gap: 13px; padding: 4px 0; border-bottom: 1px solid rgba(29,26,20,0.45); }
   .row5 article { flex: 1 1 0; min-width: 0; border-top: 3px solid var(--c, #b3261e); padding-top: 5px; }
   .row5 svg { display: block; }
   .row5 .cat { font-size: 9px; letter-spacing: 0.3px; }
@@ -85,9 +72,9 @@
   .mapbox svg { display: block; }
   .map-note { font-size: 10px; line-height: 1.35; margin-top: 5px; }
   .briefs { flex: 1 1 0; min-width: 0; }
-  .brief-grid { display: flex; gap: 16px; }
+  .brief-grid { display: flex; gap: 14px; }
   .bcol { flex: 1 1 0; min-width: 0; }
-  .bitem { font-size: 9.5px; line-height: 1.3; margin-bottom: 3px; }
+  .bitem { font-size: 9px; line-height: 1.25; margin-bottom: 2px; }
   .bitem b { font-weight: bold; }
   .bitem .n { color: #b3261e; font-weight: bold; }
 
@@ -100,42 +87,21 @@
 </head>
 <body>
 
-  <!-- shared painterly filters (document-wide) + paper grain overlay -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7" result="n"/>
-        <feDisplacementMap in="SourceGraphic" in2="n" scale="4"/>
-      </filter>
-      <filter id="roughSoft" x="-6%" y="-6%" width="112%" height="112%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="19" result="n"/>
-        <feDisplacementMap in="SourceGraphic" in2="n" scale="2.5"/>
-      </filter>
-      <filter id="grainF" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="2" seed="11" stitchTiles="stitch"/>
-        <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.025 0"/>
-      </filter>
-    </defs>
-  </svg>
-  <svg class="grain" width="1024" height="1024" viewBox="0 0 1024 1024" aria-hidden="true">
-    <rect width="1024" height="1024" filter="url(#grainF)"/>
-  </svg>
-
   <div class="topbar">
     <span class="left">THE WORLD IN ONE DAY</span>
-    <span class="right">THURSDAY&rsquo;S NEWS &middot; ONE PAGE &middot; 25 STORIES</span>
+    <span class="right">THURSDAY&rsquo;S NEWS &middot; ONE PAGE &middot; 36 STORIES</span>
   </div>
   <div class="rule"></div>
   <h1 class="date">Thursday 19 November 2026</h1>
   <div class="subhead">Three leaders meet in Shenzhen &middot; GTA VI unlocks worldwide &middot; The biggest IPO ever debuts</div>
 
   <div class="regions">
-    <div style="flex:4;background:#2e5a9b">EUROPE 4</div>
-    <div style="flex:8;background:#4a7c59">THE AMERICAS 8</div>
-    <div style="flex:5;background:#c98a1b">ASIA-PACIFIC 5</div>
-    <div style="flex:3;background:#b3261e">MIDEAST 3</div>
-    <div style="flex:2;background:#8a6d3b">AFRICA 2</div>
-    <div style="flex:2;background:#2e5a6b">OCEANIA 1</div>
+    <div style="flex:5;background:#2e5a9b">EUROPE 5</div>
+    <div style="flex:11;background:#4a7c59">THE AMERICAS 11</div>
+    <div style="flex:8;background:#c98a1b">ASIA-PACIFIC 8</div>
+    <div style="flex:5;background:#b3261e">MIDEAST 5</div>
+    <div style="flex:3;background:#8a6d3b">AFRICA 3</div>
+    <div style="flex:2;background:#2e5a6b">OCEANIA 2</div>
     <div style="flex:2;background:#6b675c">WORLD 2</div>
   </div>
 
@@ -148,72 +114,37 @@
     <div class="ncell"><div class="big">730,000</div><div class="lbl">Rohingya who fled in 2017</div></div>
   </div>
 
-  <div class="timeline">
-    <div class="tl-label">THE DAY<br>IN UTC</div>
-    <div class="tl-slots">
-      <div class="tl"><div class="t">OVERNIGHT</div><div class="h">GTA VI unlocks from New Zealand</div></div>
-      <div class="tl"><div class="t">MORNING</div><div class="h">Xi, Trump, Putin meet in Shenzhen</div></div>
-      <div class="tl"><div class="t">09:00 UTC</div><div class="h">World Court reads Rohingya judgment</div></div>
-      <div class="tl"><div class="t">14:30 UTC</div><div class="h">Anthropic&rsquo;s first Nasdaq trades</div></div>
-      <div class="tl"><div class="t">EVENING</div><div class="h">COP31 talks enter final phase</div></div>
-    </div>
-  </div>
-
-  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO — painterly: brush dabs, rough edges, glow -->
+  <!-- HERO 1-3: Shenzhen summit, GTA VI, Anthropic IPO — simple flat art, no filters -->
   <section class="hero">
     <article style="--c:#b3261e">
-      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="100" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="v4h1sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#4a1712"/><stop offset="0.25" stop-color="#8a3320"/><stop offset="0.5" stop-color="#c25a2a"/><stop offset="0.75" stop-color="#e8863f"/><stop offset="1" stop-color="#f9c86a"/>
+          <linearGradient id="h1sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5a1f16"/><stop offset="0.55" stop-color="#c25a2a"/><stop offset="1" stop-color="#f9c86a"/>
           </linearGradient>
-          <radialGradient id="v4h1sun" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0" stop-color="#fff8cc"/><stop offset="0.4" stop-color="#ffe08a"/><stop offset="0.75" stop-color="#ffb347" stop-opacity="0.55"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/>
-          </radialGradient>
         </defs>
-        <rect x="0" y="0" width="316" height="132" fill="url(#v4h1sky)"/>
-        <!-- brush dabs in the sky -->
-        <g opacity="0.5">
-          <ellipse cx="40" cy="14" rx="22" ry="6" fill="#e8863f"/><ellipse cx="70" cy="10" rx="14" ry="4" fill="#f9c86a"/>
-          <ellipse cx="250" cy="12" rx="20" ry="5" fill="#e8863f"/><ellipse cx="272" cy="20" rx="12" ry="4" fill="#f9c86a"/>
-          <ellipse cx="120" cy="22" rx="16" ry="4" fill="#c25a2a"/><ellipse cx="200" cy="28" rx="14" ry="4" fill="#e8863f"/>
-          <ellipse cx="30" cy="34" rx="12" ry="4" fill="#c25a2a"/><ellipse cx="290" cy="36" rx="12" ry="4" fill="#c25a2a"/>
-        </g>
-        <circle cx="158" cy="58" r="52" fill="url(#v4h1sun)"/>
-        <circle cx="158" cy="58" r="30" fill="url(#v4h1sun)" opacity="0.8"/>
-        <circle cx="158" cy="58" r="18" fill="#ffdf8a"/>
-        <g fill="#fff3c4" opacity="0.85" filter="url(#roughSoft)">
-          <ellipse cx="52" cy="18" rx="20" ry="5"/><ellipse cx="70" cy="13" rx="13" ry="4"/>
-          <ellipse cx="240" cy="14" rx="18" ry="5"/><ellipse cx="262" cy="20" rx="12" ry="4"/>
-        </g>
-        <g stroke="#ffd97a" stroke-width="1.6" fill="none" stroke-linecap="round">
-          <path d="M96 26 q4 -4 8 0 q4 -4 8 0"/><path d="M212 22 q4 -4 8 0 q4 -4 8 0"/>
-        </g>
-        <!-- far skyline, dusk mauve, rough edges -->
-        <g fill="#7a3a30" filter="url(#rough)">
+        <rect x="0" y="0" width="316" height="132" fill="url(#h1sky)"/>
+        <circle cx="158" cy="56" r="26" fill="#ffdf8a"/>
+        <circle cx="158" cy="56" r="40" fill="#ffdf8a" opacity="0.25"/>
+        <g fill="#7a3a30">
           <rect x="0" y="52" width="18" height="40"/><rect x="24" y="42" width="14" height="50"/>
           <rect x="44" y="56" width="16" height="36"/><rect x="66" y="46" width="12" height="46"/>
           <rect x="238" y="48" width="14" height="44"/><rect x="258" y="56" width="16" height="36"/>
           <rect x="280" y="42" width="12" height="50"/><rect x="298" y="54" width="18" height="38"/>
         </g>
-        <!-- near skyline, dark -->
-        <g fill="#2a1410" filter="url(#rough)">
+        <g fill="#2a1410">
           <rect x="0" y="64" width="14" height="30"/><rect x="18" y="52" width="12" height="42"/>
           <rect x="34" y="66" width="16" height="28"/><rect x="54" y="56" width="12" height="38"/>
           <rect x="248" y="60" width="14" height="34"/><rect x="266" y="68" width="12" height="26"/>
           <rect x="282" y="54" width="12" height="40"/><rect x="300" y="64" width="16" height="30"/>
         </g>
-        <g fill="#ffd97a" opacity="0.95">
+        <g fill="#ffd97a">
           <rect x="21" y="60" width="3" height="3"/><rect x="21" y="70" width="3" height="3"/>
           <rect x="57" y="64" width="3" height="3"/><rect x="269" y="62" width="3" height="3"/>
           <rect x="285" y="72" width="3" height="3"/><rect x="37" y="74" width="3" height="3"/>
-          <rect x="251" y="72" width="3" height="3"/><rect x="303" y="72" width="3" height="3"/>
         </g>
-        <!-- summit table -->
         <rect x="0" y="94" width="316" height="38" fill="#241a12"/>
         <rect x="0" y="94" width="316" height="3" fill="#f7efdd" opacity="0.5"/>
-        <rect x="0" y="116" width="316" height="16" fill="#1a120c"/>
-        <!-- three flags, larger -->
         <line x1="112" y1="94" x2="112" y2="52" stroke="#f7efdd" stroke-width="2"/>
         <rect x="112" y="52" width="32" height="18" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.8"/>
         <rect x="112" y="52" width="32" height="3" fill="#b3261e"/><rect x="112" y="58" width="32" height="3" fill="#b3261e"/><rect x="112" y="64" width="32" height="3" fill="#b3261e"/>
@@ -224,15 +155,11 @@
         <line x1="204" y1="94" x2="204" y2="52" stroke="#f7efdd" stroke-width="2"/>
         <rect x="204" y="52" width="32" height="18" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.8"/>
         <rect x="204" y="58" width="32" height="6" fill="#2e5a9b"/><rect x="204" y="64" width="32" height="6" fill="#b3261e"/>
-        <!-- three leaders seated -->
         <g>
           <circle cx="128" cy="86" r="5" fill="#e8d5b5"/><path d="M121 94 L135 94 L136 102 L120 102 Z" fill="#1d1a14"/>
           <circle cx="174" cy="86" r="5" fill="#e8d5b5"/><path d="M167 94 L181 94 L182 102 L166 102 Z" fill="#2e5a9b"/>
           <circle cx="220" cy="86" r="5" fill="#e8d5b5"/><path d="M213 94 L227 94 L228 102 L212 102 Z" fill="#b3261e"/>
         </g>
-        <!-- red carpet -->
-        <path d="M84 116 L102 116 L112 122 L94 122 Z" fill="#b3261e"/>
-        <path d="M214 116 L232 116 L242 122 L224 122 Z" fill="#b3261e"/>
         <rect x="6" y="6" width="104" height="15" fill="#1d1a14" opacity="0.85"/>
         <text x="12" y="17" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#f7efdd" letter-spacing="1">SHENZHEN &middot; APEC</text>
       </svg>
@@ -241,39 +168,26 @@
       <p>Three nuclear powers meet at APEC; arms control and the Iran war top the agenda.</p>
     </article>
     <article style="--c:#7b2d8b">
-      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="100" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="v4h2sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#16052e"/><stop offset="0.3" stop-color="#4a1660"/><stop offset="0.6" stop-color="#a83268"/><stop offset="0.85" stop-color="#e05a6e"/><stop offset="1" stop-color="#ffb347"/>
+          <linearGradient id="h2sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16052e"/><stop offset="0.45" stop-color="#7b2d8b"/><stop offset="0.8" stop-color="#e05a6e"/><stop offset="1" stop-color="#ffb347"/>
           </linearGradient>
-          <radialGradient id="v4h2sun" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0" stop-color="#fff0b0"/><stop offset="0.5" stop-color="#ffd27a"/><stop offset="0.8" stop-color="#ff9a5a" stop-opacity="0.5"/><stop offset="1" stop-color="#ff9a5a" stop-opacity="0"/>
-          </radialGradient>
         </defs>
-        <rect x="0" y="0" width="316" height="132" fill="url(#v4h2sky)"/>
-        <!-- brush dabs in the dusk sky -->
-        <g opacity="0.45">
-          <ellipse cx="48" cy="16" rx="20" ry="5" fill="#a83268"/><ellipse cx="80" cy="10" rx="12" ry="4" fill="#e05a6e"/>
-          <ellipse cx="240" cy="14" rx="18" ry="5" fill="#a83268"/><ellipse cx="268" cy="22" rx="12" ry="4" fill="#e05a6e"/>
-          <ellipse cx="130" cy="24" rx="15" ry="4" fill="#4a1660"/><ellipse cx="200" cy="30" rx="13" ry="4" fill="#a83268"/>
-        </g>
+        <rect x="0" y="0" width="316" height="132" fill="url(#h2sky)"/>
         <g fill="#f7efdd" opacity="0.9">
           <circle cx="26" cy="10" r="1.6"/><circle cx="66" cy="7" r="1.2"/><circle cx="116" cy="12" r="1.5"/>
           <circle cx="206" cy="8" r="1.3"/><circle cx="252" cy="12" r="1.4"/><circle cx="296" cy="16" r="1.2"/>
-          <circle cx="150" cy="6" r="1.1"/><circle cx="96" cy="20" r="1.1"/>
         </g>
-        <circle cx="158" cy="72" r="46" fill="url(#v4h2sun)"/>
-        <circle cx="158" cy="72" r="30" fill="url(#v4h2sun)" opacity="0.85"/>
-        <circle cx="158" cy="72" r="22" fill="#ffd27a"/>
-        <!-- far skyline -->
-        <g fill="#5a2a72" filter="url(#rough)">
+        <circle cx="158" cy="72" r="30" fill="#ffd27a"/>
+        <circle cx="158" cy="72" r="44" fill="#ffd27a" opacity="0.25"/>
+        <g fill="#5a2a72">
           <rect x="0" y="62" width="20" height="36"/><rect x="26" y="50" width="14" height="48"/>
           <rect x="46" y="66" width="16" height="32"/><rect x="68" y="54" width="12" height="44"/>
           <rect x="238" y="58" width="16" height="40"/><rect x="260" y="48" width="14" height="50"/>
           <rect x="280" y="64" width="16" height="34"/><rect x="300" y="54" width="16" height="44"/>
         </g>
-        <!-- near skyline -->
-        <g fill="#1d0a2e" filter="url(#rough)">
+        <g fill="#1d0a2e">
           <rect x="0" y="72" width="16" height="28"/><rect x="20" y="60" width="12" height="40"/>
           <rect x="36" y="74" width="14" height="26"/><rect x="54" y="66" width="12" height="34"/>
           <rect x="250" y="68" width="14" height="32"/><rect x="268" y="58" width="12" height="42"/>
@@ -283,30 +197,17 @@
           <rect x="23" y="68" width="3" height="3"/><rect x="23" y="78" width="3" height="3"/>
           <rect x="271" y="66" width="3" height="3"/><rect x="271" y="76" width="3" height="3"/>
           <rect x="57" y="74" width="3" height="3"/><rect x="287" y="80" width="3" height="3"/>
-          <rect x="39" y="82" width="3" height="3"/><rect x="305" y="72" width="3" height="3"/>
         </g>
-        <!-- palm trees -->
-        <g stroke="#1d0a2e" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#roughSoft)">
+        <g stroke="#1d0a2e" stroke-width="2.5" fill="none" stroke-linecap="round">
           <path d="M92 100 L92 68"/><path d="M92 68 Q80 60 70 64 M92 68 Q104 60 114 64 M92 68 Q88 56 78 54 M92 68 Q96 56 106 54"/>
           <path d="M224 100 L224 66"/><path d="M224 66 Q212 58 202 62 M224 66 Q236 58 246 62 M224 66 Q220 54 210 52 M224 66 Q228 54 238 52"/>
           <path d="M40 100 L40 74"/><path d="M40 74 Q30 67 22 70 M40 74 Q50 67 58 70 M40 74 Q37 64 29 62 M40 74 Q43 64 51 62"/>
         </g>
-        <!-- sea with sun reflection -->
         <rect x="0" y="100" width="316" height="32" fill="#12083a"/>
         <rect x="0" y="100" width="316" height="2" fill="#ff5e8a" opacity="0.7"/>
         <ellipse cx="158" cy="106" rx="40" ry="2.5" fill="#ffd27a" opacity="0.6"/>
         <ellipse cx="158" cy="114" rx="30" ry="2" fill="#ffd27a" opacity="0.4"/>
-        <ellipse cx="158" cy="121" rx="20" ry="1.8" fill="#ffd27a" opacity="0.3"/>
-        <ellipse cx="120" cy="110" rx="14" ry="2" fill="#ff5e8a" opacity="0.35"/>
-        <ellipse cx="200" cy="108" rx="12" ry="2" fill="#ff5e8a" opacity="0.35"/>
-        <!-- neon VICE CITY badge -->
         <text x="158" y="38" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#ff7ad9" stroke="#7b2d8b" stroke-width="0.6" text-anchor="middle" letter-spacing="3">VICE CITY</text>
-        <!-- controller badge -->
-        <g>
-          <rect x="240" y="6" width="68" height="26" rx="13" fill="#f7efdd" stroke="#1d0a2e" stroke-width="1.5"/>
-          <circle cx="254" cy="19" r="4.5" fill="#1d0a2e"/><circle cx="265" cy="19" r="4.5" fill="none" stroke="#1d0a2e" stroke-width="1.5"/>
-          <circle cx="291" cy="15" r="2.6" fill="#c43d7a"/><circle cx="297" cy="21" r="2.6" fill="#2e5a9b"/><circle cx="285" cy="21" r="2.6" fill="#4a7c59"/>
-        </g>
         <rect x="6" y="6" width="196" height="15" fill="#1d0a2e" opacity="0.85"/>
         <text x="12" y="17" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#f7efdd" letter-spacing="1">OUT TODAY &middot; MIDNIGHT LOCAL TIME</text>
       </svg>
@@ -315,20 +216,18 @@
       <p>Unlocks at midnight everywhere, NZ first; 15.9m pre-orders. $79.99, no PC yet.</p>
     </article>
     <article style="--c:#0d5c3f">
-      <svg width="316" height="96" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="316" height="100" viewBox="0 0 316 132" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="316" height="132" fill="#0d3b2e"/>
         <g stroke="#ffffff" stroke-opacity="0.10" stroke-width="1">
           <line x1="0" y1="33" x2="316" y2="33"/><line x1="0" y1="66" x2="316" y2="66"/><line x1="0" y1="99" x2="316" y2="99"/>
           <line x1="79" y1="0" x2="79" y2="132"/><line x1="158" y1="0" x2="158" y2="132"/><line x1="237" y1="0" x2="237" y2="132"/>
         </g>
-        <!-- volume bars -->
         <g fill="#37c978" opacity="0.45">
           <rect x="24" y="112" width="8" height="9"/><rect x="58" y="109" width="8" height="12"/><rect x="92" y="111" width="8" height="10"/>
           <rect x="126" y="107" width="8" height="14"/><rect x="160" y="110" width="8" height="11"/><rect x="194" y="106" width="8" height="15"/>
           <rect x="228" y="108" width="8" height="13"/><rect x="262" y="104" width="8" height="17"/><rect x="292" y="107" width="8" height="14"/>
         </g>
-        <!-- candlesticks rising, hand-drawn edges -->
-        <g filter="url(#roughSoft)">
+        <g>
           <line x1="28" y1="104" x2="28" y2="86" stroke="#e05252" stroke-width="2"/><rect x="22" y="88" width="12" height="14" fill="#e05252"/>
           <line x1="62" y1="97" x2="62" y2="77" stroke="#37c978" stroke-width="2"/><rect x="56" y="79" width="12" height="14" fill="#37c978"/>
           <line x1="96" y1="88" x2="96" y2="66" stroke="#37c978" stroke-width="2"/><rect x="90" y="70" width="12" height="14" fill="#37c978"/>
@@ -343,10 +242,10 @@
         <path d="M296 28 l-10 2 M296 28 l-2 10" stroke="#ffd27a" stroke-width="2.5" fill="none"/>
         <circle cx="296" cy="28" r="5" fill="#ffd27a"/>
         <rect x="238" y="4" width="72" height="15" fill="#37c978"/>
-        <text x="274" y="15" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#0d3b2e" text-anchor="middle">&#9650; DAY ONE</text>
-        <text x="10" y="126" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#f7efdd" letter-spacing="1">ANT</text>
-        <text x="54" y="126" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#37c978">$83</text>
-        <text x="148" y="126" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#f7efdd" letter-spacing="0.5">NASDAQ &middot; FIRST TRADES TODAY</text>
+        <text x="274" y="15" font-family="Arial" font-size="9" font-weight="bold" fill="#0d3b2e" text-anchor="middle">&#9650; DAY ONE</text>
+        <text x="10" y="126" font-family="Arial" font-size="16" font-weight="bold" fill="#f7efdd" letter-spacing="1">ANT</text>
+        <text x="54" y="126" font-family="Arial" font-size="16" font-weight="bold" fill="#37c978">$83</text>
+        <text x="148" y="126" font-family="Arial" font-size="9" font-weight="bold" fill="#f7efdd" letter-spacing="0.5">NASDAQ &middot; FIRST TRADES TODAY</text>
       </svg>
       <div class="cat"><span><span class="numc">3</span>NASDAQ &middot; MARKETS</span><span class="src">REUTERS &middot; CNBC</span></div>
       <h3>Anthropic debuts in the biggest IPO on record</h3>
@@ -357,12 +256,9 @@
   <!-- CARDS 4-8 -->
   <section class="row5">
     <article style="--c:#2e5a9b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
-        <g opacity="0.5">
-          <ellipse cx="30" cy="8" rx="16" ry="4" fill="#b8cce0"/><ellipse cx="150" cy="6" rx="14" ry="4" fill="#b8cce0"/>
-        </g>
-        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1" filter="url(#roughSoft)">
+        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1">
           <path d="M18 18 L92 18 L92 28 L18 28 Z"/>
           <path d="M55 5 L92 18 L18 18 Z" fill="#c98a1b"/>
           <rect x="26" y="28" width="9" height="30"/><rect x="46" y="28" width="9" height="30"/>
@@ -381,29 +277,21 @@
       <p>The ICJ reads its judgment in The Gambia&rsquo;s case &mdash; final, with no appeal.</p>
     </article>
     <article style="--c:#4a7c59">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dcebf2"/>
         <circle cx="158" cy="13" r="10" fill="#f9d976"/>
-        <circle cx="158" cy="13" r="15" fill="#f9d976" opacity="0.35"/>
-        <g opacity="0.5">
-          <ellipse cx="40" cy="10" rx="14" ry="4" fill="#b8d4e0"/><ellipse cx="120" cy="8" rx="12" ry="3" fill="#b8d4e0"/>
-        </g>
-        <!-- mountains, rough edges -->
-        <path d="M0 37 L28 17 L52 37 Z" fill="#8a97a3" filter="url(#rough)"/><path d="M40 37 L70 13 L96 37 Z" fill="#6b7a88" filter="url(#rough)"/>
-        <!-- conference hall -->
-        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1" filter="url(#roughSoft)">
+        <path d="M0 37 L28 17 L52 37 Z" fill="#8a97a3"/><path d="M40 37 L70 13 L96 37 Z" fill="#6b7a88"/>
+        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="1">
           <path d="M42 37 L92 37 L92 45 L42 45 Z"/>
           <path d="M67 24 L92 37 L42 37 Z" fill="#c98a1b"/>
           <rect x="48" y="45" width="7" height="17"/><rect x="62" y="45" width="7" height="17"/><rect x="76" y="45" width="7" height="17"/>
           <rect x="38" y="62" width="108" height="4"/>
         </g>
-        <!-- pennant flags on the hall -->
         <g>
           <line x1="52" y1="24" x2="52" y2="15" stroke="#1d1a14" stroke-width="1"/><rect x="52" y="15" width="9" height="6" fill="#b3261e"/>
           <line x1="67" y1="24" x2="67" y2="14" stroke="#1d1a14" stroke-width="1"/><rect x="67" y="14" width="9" height="6" fill="#2e5a9b"/>
           <line x1="82" y1="24" x2="82" y2="15" stroke="#1d1a14" stroke-width="1"/><rect x="82" y="15" width="9" height="6" fill="#4a7c59"/>
         </g>
-        <!-- palm + lawn -->
         <path d="M160 62 L160 45 M160 45 Q150 39 142 43 M160 45 Q170 39 178 43 M160 45 Q157 35 149 33 M160 45 Q163 35 171 33" stroke="#2e5a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
         <rect x="0" y="62" width="185" height="10" fill="#4a7c59"/>
       </svg>
@@ -412,21 +300,17 @@
       <p>Ministers take over the text; &ldquo;phase out&rdquo; and the $120bn fund stay open.</p>
     </article>
     <article style="--c:#1d5a8a">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#0d2b4a"/>
-        <!-- cyclone spiral, rough -->
-        <path d="M92 28 m0 -21 a21 21 0 1 1 -21 21 a15 15 0 1 1 15 -15 a9 9 0 1 1 -9 9" fill="none" stroke="#f7efdd" stroke-width="3.5" filter="url(#roughSoft)"/>
+        <path d="M92 28 m0 -21 a21 21 0 1 1 -21 21 a15 15 0 1 1 15 -15 a9 9 0 1 1 -9 9" fill="none" stroke="#f7efdd" stroke-width="3.5"/>
         <circle cx="92" cy="28" r="4.5" fill="#f9d976"/>
-        <!-- rain -->
         <g stroke="#7ab8e8" stroke-width="2" stroke-linecap="round">
           <line x1="28" y1="8" x2="24" y2="19"/><line x1="48" y1="4" x2="44" y2="15"/><line x1="150" y1="6" x2="146" y2="17"/><line x1="168" y1="13" x2="164" y2="24"/><line x1="132" y1="2" x2="128" y2="13"/>
         </g>
-        <!-- RED ALERT banner -->
         <rect x="0" y="48" width="62" height="11" fill="#b3261e"/>
         <text x="31" y="56" font-family="Arial" font-size="7.5" font-weight="bold" fill="#f7efdd" text-anchor="middle">RED ALERT</text>
-        <!-- coastline houses -->
         <path d="M0 60 L185 60 L185 72 L0 72 Z" fill="#c98a1b"/>
-        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="0.8" filter="url(#roughSoft)">
+        <g fill="#f7efdd" stroke="#1d1a14" stroke-width="0.8">
           <path d="M96 50 L110 50 L110 60 L96 60 Z"/><path d="M94 50 L103 43 L112 50 Z" fill="#b3261e"/>
           <path d="M118 52 L130 52 L130 60 L118 60 Z"/><path d="M116 52 L124 46 L132 52 Z" fill="#2e5a9b"/>
           <path d="M140 50 L156 50 L156 60 L140 60 Z"/><path d="M138 50 L148 43 L158 50 Z" fill="#4a7c59"/>
@@ -438,16 +322,11 @@
       <p>Red alerts in 11 districts, schools shut. Landfall near Puri due Friday.</p>
     </article>
     <article style="--c:#2e5a9b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="37" fill="#2e5a9b"/>
         <rect x="0" y="37" width="185" height="35" fill="#f2d54b"/>
         <circle cx="152" cy="13" r="8" fill="#f9d976"/>
-        <circle cx="152" cy="13" r="13" fill="#f9d976" opacity="0.3"/>
-        <g stroke="#1d1a14" stroke-width="1.4" fill="none" stroke-linecap="round">
-          <path d="M20 13 q3 -3 6 0 q3 -3 6 0"/><path d="M120 9 q3 -3 6 0 q3 -3 6 0"/>
-        </g>
-        <!-- St Sophia bell tower silhouette -->
-        <g fill="#1d1a14" filter="url(#roughSoft)">
+        <g fill="#1d1a14">
           <rect x="82" y="24" width="22" height="37"/>
           <path d="M78 24 L93 9 L108 24 Z"/>
           <rect x="90" y="3" width="6" height="8"/>
@@ -463,20 +342,16 @@
       <p>The war will not be raised at the summit, the White House says.</p>
     </article>
     <article style="--c:#c98a1b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#fbeecf"/>
-        <!-- faint skyline -->
-        <g fill="#c9a86a" opacity="0.6" filter="url(#roughSoft)">
+        <g fill="#c9a86a" opacity="0.6">
           <rect x="0" y="19" width="14" height="22"/><rect x="20" y="13" width="12" height="28"/><rect x="150" y="15" width="12" height="26"/><rect x="168" y="21" width="17" height="20"/>
         </g>
-        <!-- long table -->
         <rect x="8" y="41" width="169" height="24" fill="#3a2c1c"/>
         <rect x="8" y="41" width="169" height="2" fill="#f7efdd" opacity="0.5"/>
-        <!-- 21 mini flags along the table -->
         <g>
           <rect x="12" y="26" width="7" height="5" fill="#b3261e"/><rect x="20" y="26" width="7" height="5" fill="#2e5a9b"/><rect x="28" y="26" width="7" height="5" fill="#4a7c59"/><rect x="36" y="26" width="7" height="5" fill="#c98a1b"/><rect x="44" y="26" width="7" height="5" fill="#8a6d3b"/><rect x="52" y="26" width="7" height="5" fill="#b3261e"/><rect x="60" y="26" width="7" height="5" fill="#2e5a6b"/><rect x="68" y="26" width="7" height="5" fill="#7b2d8b"/><rect x="76" y="26" width="7" height="5" fill="#4a7c59"/><rect x="84" y="26" width="7" height="5" fill="#c98a1b"/><rect x="92" y="26" width="7" height="5" fill="#b3261e"/><rect x="100" y="26" width="7" height="5" fill="#2e5a9b"/><rect x="108" y="26" width="7" height="5" fill="#8a6d3b"/><rect x="116" y="26" width="7" height="5" fill="#4a7c59"/><rect x="124" y="26" width="7" height="5" fill="#b3261e"/><rect x="132" y="26" width="7" height="5" fill="#2e5a6b"/><rect x="140" y="26" width="7" height="5" fill="#c98a1b"/><rect x="148" y="26" width="7" height="5" fill="#7b2d8b"/><rect x="156" y="26" width="7" height="5" fill="#4a7c59"/><rect x="164" y="26" width="7" height="5" fill="#b3261e"/><rect x="172" y="26" width="5" height="5" fill="#2e5a9b"/>
         </g>
-        <!-- signed document + seal on the table -->
         <rect x="66" y="47" width="52" height="13" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.8"/>
         <path d="M72 51 L110 51 M72 55 L100 55" stroke="#1d1a14" stroke-width="1" stroke-linecap="round"/>
         <circle cx="124" cy="53" r="6" fill="#b3261e"/><circle cx="124" cy="53" r="3" fill="none" stroke="#f7efdd" stroke-width="1"/>
@@ -491,9 +366,9 @@
   <!-- CARDS 9-13 -->
   <section class="row5">
     <article style="--c:#1d5a8a">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#cfdde8"/>
-        <ellipse cx="62" cy="22" rx="30" ry="11" fill="#8a97a3" filter="url(#roughSoft)"/><ellipse cx="84" cy="16" rx="20" ry="9" fill="#a8b4bd"/>
+        <ellipse cx="62" cy="22" rx="30" ry="11" fill="#8a97a3"/><ellipse cx="84" cy="16" rx="20" ry="9" fill="#a8b4bd"/>
         <ellipse cx="140" cy="13" rx="18" ry="7" fill="#8a97a3"/>
         <g stroke="#2e5a9b" stroke-width="2.2" stroke-linecap="round"><line x1="42" y1="37" x2="38" y2="50"/><line x1="60" y1="37" x2="56" y2="50"/><line x1="78" y1="37" x2="74" y2="50"/><line x1="96" y1="37" x2="92" y2="50"/><line x1="114" y1="37" x2="110" y2="50"/></g>
         <path d="M126 43 L156 43 L156 60 L126 60 Z" fill="#f7efdd" stroke="#1d1a14" stroke-width="1"/>
@@ -506,16 +381,12 @@
       <p>A foot of rain in Hollywood, 300 rescue calls in a night; schools shut.</p>
     </article>
     <article style="--c:#8a6d3b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#e8ddc4"/>
-        <!-- rock strata, rough -->
-        <g filter="url(#roughSoft)">
-          <rect x="0" y="9" width="185" height="12" fill="#8a6d3b"/><rect x="0" y="21" width="185" height="12" fill="#a8875a"/>
-          <rect x="0" y="33" width="185" height="12" fill="#c9a86a"/><rect x="0" y="45" width="185" height="12" fill="#7a5a3a"/>
-          <rect x="0" y="57" width="185" height="15" fill="#4a3520"/>
-        </g>
+        <rect x="0" y="9" width="185" height="12" fill="#8a6d3b"/><rect x="0" y="21" width="185" height="12" fill="#a8875a"/>
+        <rect x="0" y="33" width="185" height="12" fill="#c9a86a"/><rect x="0" y="45" width="185" height="12" fill="#7a5a3a"/>
+        <rect x="0" y="57" width="185" height="15" fill="#4a3520"/>
         <g fill="#f7efdd" opacity="0.85"><circle cx="30" cy="15" r="2"/><circle cx="52" cy="27" r="2"/><circle cx="18" cy="39" r="2"/><circle cx="66" cy="51" r="2"/><circle cx="150" cy="15" r="2"/><circle cx="168" cy="39" r="2"/></g>
-        <!-- magnifier over a fossil spiral -->
         <circle cx="128" cy="37" r="21" fill="#f7efdd" fill-opacity="0.92" stroke="#1d1a14" stroke-width="2.5"/>
         <path d="M128 37 m0 -12 a12 12 0 1 1 -12 12 a8 8 0 1 1 8 -8 a4.5 4.5 0 1 1 -4.5 4.5" fill="none" stroke="#8a6d3b" stroke-width="2.5"/>
         <circle cx="128" cy="37" r="2.5" fill="#b3261e"/>
@@ -528,18 +399,15 @@
       <p>A Nature study blames mantle currents and ancient ice sheets.</p>
     </article>
     <article style="--c:#2e5a9b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#f7efdd"/>
-        <!-- French flag bands -->
         <rect x="16" y="11" width="16" height="50" fill="#2e5a9b"/><rect x="32" y="11" width="16" height="50" fill="#f7efdd" stroke="#1d1a14" stroke-width="0.5"/><rect x="48" y="11" width="16" height="50" fill="#b3261e"/>
-        <!-- Eiffel Tower silhouette -->
-        <g fill="#1d1a14" filter="url(#roughSoft)">
+        <g fill="#1d1a14">
           <path d="M118 61 L126 19 L134 61 L130 61 L128 43 L124 43 L122 61 Z"/>
           <path d="M122 32 L130 32 L129 36 L123 36 Z"/>
           <rect x="116" y="59" width="20" height="3"/>
           <rect x="125" y="13" width="2" height="7"/>
         </g>
-        <!-- briefcase + rising arrow -->
         <rect x="82" y="44" width="30" height="17" fill="#c98a1b" stroke="#1d1a14" stroke-width="1"/>
         <rect x="92" y="37" width="10" height="7" fill="#f7efdd" stroke="#1d1a14" stroke-width="1"/>
         <polyline points="140,54 152,39 164,45 178,22" fill="none" stroke="#b3261e" stroke-width="2.5"/>
@@ -550,59 +418,47 @@
       <p>The hard-left leader is a plausible president, the minister concedes.</p>
     </article>
     <article style="--c:#c98a1b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="v4c12sky" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="c12sky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#3a2a4a"/><stop offset="0.5" stop-color="#a8543a"/><stop offset="0.8" stop-color="#d88a4a"/><stop offset="1" stop-color="#f2c078"/>
           </linearGradient>
         </defs>
-        <rect x="0" y="0" width="185" height="72" fill="url(#v4c12sky)"/>
+        <rect x="0" y="0" width="185" height="72" fill="url(#c12sky)"/>
         <circle cx="146" cy="15" r="9" fill="#f9d976"/>
-        <circle cx="146" cy="15" r="14" fill="#f9d976" opacity="0.3"/>
-        <!-- brush dabs in the dusk -->
-        <g opacity="0.4">
-          <ellipse cx="40" cy="12" rx="14" ry="4" fill="#a8543a"/><ellipse cx="90" cy="8" rx="12" ry="3" fill="#d88a4a"/>
-          <ellipse cx="170" cy="24" rx="12" ry="4" fill="#a8543a"/>
-        </g>
-        <!-- missile intercept streak + burst -->
         <path d="M20 28 L52 13" stroke="#f7efdd" stroke-width="2" stroke-dasharray="4 3"/>
         <circle cx="54" cy="12" r="4" fill="#ffd27a"/><circle cx="54" cy="12" r="7" fill="none" stroke="#ffd27a" stroke-width="1.5"/>
-        <!-- desert skyline, rough -->
-        <g fill="#2a1a2e" filter="url(#rough)">
+        <g fill="#2a1a2e">
           <rect x="0" y="37" width="16" height="24"/><rect x="20" y="30" width="12" height="31"/><rect x="36" y="39" width="14" height="22"/>
           <rect x="120" y="32" width="12" height="29"/><rect x="136" y="39" width="14" height="22"/><rect x="154" y="28" width="12" height="33"/><rect x="170" y="37" width="15" height="24"/>
         </g>
-        <g fill="#ffd27a" opacity="0.9"><rect x="23" y="36" width="2.5" height="2.5"/><rect x="123" y="38" width="2.5" height="2.5"/><rect x="157" y="34" width="2.5" height="2.5"/></g>
-        <!-- dunes -->
+        <g fill="#ffd27a"><rect x="23" y="36" width="2.5" height="2.5"/><rect x="123" y="38" width="2.5" height="2.5"/><rect x="157" y="34" width="2.5" height="2.5"/></g>
         <path d="M0 59 Q46 49 92 59 Q138 69 185 59 L185 72 L0 72 Z" fill="#e8c88a"/>
-        <!-- green shield + check -->
         <g>
           <path d="M78 43 L94 43 L94 51 Q86 59 78 51 Z" fill="#4a7c59" stroke="#f7efdd" stroke-width="1.5"/>
           <path d="M81 49 L85 53 L92 45" fill="none" stroke="#f7efdd" stroke-width="2.5" stroke-linecap="round"/>
         </g>
-        <text x="100" y="53" font-family="Arial" font-size="10" font-weight="bold" fill="#1d1a14">ALL CLEAR</text>
+        <rect x="98" y="44" width="66" height="14" fill="#1d1a14" opacity="0.88"/>
+        <text x="131" y="54" font-family="Arial" font-size="10" font-weight="bold" fill="#f7efdd" text-anchor="middle">ALL CLEAR</text>
       </svg>
       <div class="cat"><span><span class="numc">12</span>JAZAN &middot; GULF</span></div>
       <h3>Saudi Arabia says danger has passed in three cities</h3>
       <p>The all-clear follows southern alerts after a Houthi missile was downed.</p>
     </article>
     <article style="--c:#8a6d3b">
-      <svg width="185" height="46" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="185" height="48" viewBox="0 0 185 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="185" height="72" fill="#dfe8f2"/>
-        <!-- port cranes -->
-        <g stroke="#1d1a14" stroke-width="2" fill="none" filter="url(#roughSoft)">
+        <g stroke="#1d1a14" stroke-width="2" fill="none">
           <path d="M18 48 L18 13 L44 13 M18 13 L30 26 M18 21 L26 13"/>
           <path d="M150 48 L150 15 L172 15 M150 15 L160 26"/>
         </g>
         <line x1="18" y1="13" x2="18" y2="26" stroke="#b3261e" stroke-width="1.5"/>
         <rect x="14" y="26" width="8" height="6" fill="#b3261e"/>
-        <!-- ship + crates -->
         <path d="M52 48 L118 48 L112 57 L58 57 Z" fill="#3a372f"/>
         <g stroke="#1d1a14" stroke-width="0.5">
           <rect x="58" y="33" width="17" height="15" fill="#b3261e"/><rect x="77" y="33" width="17" height="15" fill="#2e5a9b"/><rect x="96" y="33" width="17" height="15" fill="#b3261e"/>
           <rect x="67" y="18" width="17" height="15" fill="#4a7c59"/><rect x="86" y="18" width="17" height="15" fill="#c98a1b"/>
         </g>
-        <!-- police tape -->
         <g transform="rotate(-8 92 43)">
           <rect x="40" y="39" width="110" height="8" fill="#f2d54b" stroke="#1d1a14" stroke-width="0.7"/>
           <text x="95" y="46" font-family="Arial" font-size="7" font-weight="bold" fill="#1d1a14" text-anchor="middle" letter-spacing="1">SEIZED</text>
@@ -616,18 +472,12 @@
     </article>
   </section>
 
-  <!-- BOTTOM: illustrated map + briefs 14-25 -->
+  <!-- BOTTOM: solid-continent map + briefs 14-36 -->
   <section class="bottom">
     <div class="mapbox">
       <div class="map-head">Where It Happened</div>
-      <svg width="330" height="128" viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="v4ocean" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#16294a"/><stop offset="0.55" stop-color="#1d3a5f"/><stop offset="1" stop-color="#24486e"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" width="640" height="290" fill="url(#v4ocean)"/>
-        <!-- graticule -->
+      <svg width="330" height="150" viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="640" height="290" fill="#16294a"/>
         <g stroke="#f7efdd" stroke-opacity="0.08" stroke-width="1">
           <line x1="80" y1="0" x2="80" y2="290"/><line x1="160" y1="0" x2="160" y2="290"/><line x1="240" y1="0" x2="240" y2="290"/>
           <line x1="320" y1="0" x2="320" y2="290"/><line x1="400" y1="0" x2="400" y2="290"/><line x1="480" y1="0" x2="480" y2="290"/>
@@ -635,7 +485,6 @@
           <line x1="0" y1="48" x2="640" y2="48"/><line x1="0" y1="96" x2="640" y2="96"/><line x1="0" y1="144" x2="640" y2="144"/>
           <line x1="0" y1="192" x2="640" y2="192"/><line x1="0" y1="240" x2="640" y2="240"/>
         </g>
-        <!-- ocean labels -->
         <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#f7efdd" opacity="0.42" letter-spacing="3">
           <text x="52" y="208">PACIFIC</text>
           <text x="545" y="245">PACIFIC</text>
@@ -643,10 +492,8 @@
           <text x="425" y="196">INDIAN</text>
           <text x="300" y="16">ARCTIC</text>
         </g>
-        <!-- dotted land -->
-        <g id="mapdots"></g>
-        <!-- hand-drawn coastline outlines -->
-        <g fill="none" stroke="#d8c690" stroke-opacity="0.85" stroke-width="1.4" stroke-linejoin="round" filter="url(#roughSoft)">
+        <!-- solid continents -->
+        <g fill="#e9dcbd">
           <path d="M28 28 L62 20 L118 26 L178 32 L202 50 L192 68 L170 82 L142 88 L120 100 L90 94 L60 84 L42 64 L30 46 Z"/>
           <path d="M215 18 L240 14 L252 26 L235 36 L218 30 Z"/>
           <path d="M152 152 L182 156 L196 182 L186 212 L170 238 L156 222 L146 188 L150 164 Z"/>
@@ -658,7 +505,6 @@
           <path d="M290 52 L298 50 L300 58 L292 60 Z"/>
           <path d="M585 70 L592 66 L596 78 L588 84 Z"/>
         </g>
-        <!-- compass rose -->
         <g stroke="#f7efdd" stroke-opacity="0.8" fill="none" stroke-width="1.2">
           <circle cx="606" cy="258" r="13"/>
           <path d="M606 246 L610 260 L606 256 L602 260 Z" fill="#f7efdd" stroke="none"/>
@@ -684,7 +530,7 @@
       <div class="map-note" style="font-size:9.5px;color:#6b675c"><b>HOW SURE</b> &mdash; CONFIRMED: officials or two sources &middot; CLAIM: one side&rsquo;s account.</div>
     </div>
     <div class="briefs">
-      <div class="brief-head">Also on Thursday 19 November &mdash; 12 more stories</div>
+      <div class="brief-head">Also on Thursday 19 November &mdash; 23 more stories</div>
       <div class="brief-grid">
         <div class="bcol">
           <div class="bitem"><span class="n">14</span> <b>GAZA:</b> Israeli tanks cross the Yellow Line; Hamas calls it a truce breach.</div>
@@ -693,14 +539,27 @@
           <div class="bitem"><span class="n">17</span> <b>TOKYO:</b> India and Japan review defence ties at their 2+2 dialogue.</div>
           <div class="bitem"><span class="n">18</span> <b>NAIROBI:</b> Kenya floods kill six as Ruto gives the State of the Nation address.</div>
           <div class="bitem"><span class="n">19</span> <b>CARACAS:</b> Hegseth signs a US&ndash;Venezuela military deal.</div>
-        </div>
-        <div class="bcol">
           <div class="bitem"><span class="n">20</span> <b>WASHINGTON:</b> Vance: no &ldquo;forever war&rdquo; in the Gulf.</div>
           <div class="bitem"><span class="n">21</span> <b>RIYADH:</b> Gulf leaders urge Trump not to strike Iran.</div>
+        </div>
+        <div class="bcol">
           <div class="bitem"><span class="n">22</span> <b>WASHINGTON:</b> Lu Yuming becomes the first Asian-American House Democratic chair.</div>
-          <div class="bitem"><span class="n">23</span> <b>SEOUL:</b> Half a million sit Korea&rsquo;s Suneung: 551,864 take the college exam.</div>
+          <div class="bitem"><span class="n">23</span> <b>SEOUL:</b> 551,864 sit Korea&rsquo;s Suneung college exam.</div>
           <div class="bitem"><span class="n">24</span> <b>BOGOT&Aacute;:</b> Colombia&rsquo;s unions strike over the &ldquo;Economic Rescue&rdquo; tax bill.</div>
           <div class="bitem"><span class="n">25</span> <b>WASHINGTON:</b> Trump weighs a new Iran offensive, reports say; Iran denies claims.</div>
+          <div class="bitem"><span class="n">26</span> <b>MEXICO CITY:</b> Banxico minutes: board cut rates to 6.25% on a 3&ndash;2 vote.</div>
+          <div class="bitem"><span class="n">27</span> <b>MOGADISHU:</b> Somalia accuses the UAE of secret military bases on its soil.</div>
+          <div class="bitem"><span class="n">28</span> <b>FRANKFURT:</b> Deutsche Bank handled $682m in Epstein-linked deals, FT reports.</div>
+          <div class="bitem"><span class="n">29</span> <b>NEW DELHI:</b> Modi meets the Prince and Princess.</div>
+        </div>
+        <div class="bcol">
+          <div class="bitem"><span class="n">30</span> <b>BENGALURU:</b> Amazon pledges $7bn for renewables in India by 2030.</div>
+          <div class="bitem"><span class="n">31</span> <b>AUCKLAND:</b> New Zealand plays first as GTA VI unlocks at local midnight.</div>
+          <div class="bitem"><span class="n">32</span> <b>BAGHDAD:</b> Six French ISIL members jailed for life in Iraq.</div>
+          <div class="bitem"><span class="n">33</span> <b>MANAMA:</b> Bapco refinery back on its feet after the attacks.</div>
+          <div class="bitem"><span class="n">34</span> <b>SACRAMENTO:</b> California braces for an atmospheric river; flood advisories out.</div>
+          <div class="bitem"><span class="n">35</span> <b>LA PAZ:</b> Bolivia declares an El Ni&ntilde;o emergency; 78,000 families hit.</div>
+          <div class="bitem"><span class="n">36</span> <b>KUMAMOTO:</b> Magnitude 5.7 quake jolts Kumamoto; no tsunami warning issued.</div>
         </div>
       </div>
     </div>
@@ -710,58 +569,8 @@
 
   <div class="footer">
     Every story here happened, or was first reported, on Thursday 19 November 2026. Disputed claims are attributed, not stated as fact. Sources: Reuters, AP, AFP, BBC, The Hindu, IMD, NASA, ICJ, Sotheby&rsquo;s, Pew. Original drawings.
-    <div class="dateline">READS AT THREE SIZES: THE DATE AND 3 LEADS AT THUMBNAIL SIZE &middot; 13 PICTURES AT HALF SIZE &middot; ALL 25 STORIES AT FULL SIZE</div>
+    <div class="dateline">READS AT THREE SIZES: THE DATE AND 3 LEADS AT THUMBNAIL SIZE &middot; 13 PICTURES AT HALF SIZE &middot; ALL 36 STORIES AT FULL SIZE</div>
   </div>
-  <script>
-    // Dotted world map: a 64x28 equirectangular land mask ('#' = land).
-    // The dots are drawn at render time, so the file stays small and every
-    // line here is written by hand instead of generated into the file.
-    // Grid: 64 columns map longitude -180..180, 28 rows map latitude ~85..-55.
-    const MAP_MASK = [
-      "................................................................",
-      "................................................................",
-      "......................####......................................",
-      "...#############......#####............#########################",
-      "..###################..####.....####...#########################",
-      "..####################.###...########..########################.",
-      "..###################........##########.#####################...",
-      "...#################..........##########.####################...",
-      ".....##############...........#########...################.##...",
-      "......#############............####........##############...#...",
-      ".......#########.............############...############........",
-      "........######...............#############...##########.........",
-      "..........####................############...##########.........",
-      "............###...............############....########..........",
-      "..............#########........##########........#########......",
-      "..............#########.........########..........#######.......",
-      "..............########..........########............########....",
-      "...............#######...........######.............########....",
-      "................#####............######.............#######.....",
-      "................#####.............####...............######.....",
-      ".................###..............####................####......",
-      ".................###...............##.......................##..",
-      ".................##.........................................#...",
-      "..................#.............................................",
-      "..................#.............................................",
-      "................................................................",
-      "................................................................",
-      "................................................................"
-    ];
-    const mapDots = document.getElementById('mapdots');
-    const SVG_NS = 'http://www.w3.org/2000/svg';
-    MAP_MASK.forEach((row, r) => {
-      for (let c = 0; c < row.length; c++) {
-        if (row[c] !== '#') continue;
-        const dot = document.createElementNS(SVG_NS, 'circle');
-        dot.setAttribute('cx', (c * 10 + 5).toFixed(1));
-        dot.setAttribute('cy', (r * 10 + 5).toFixed(1));
-        dot.setAttribute('r', '3.2');
-        dot.setAttribute('fill', '#f7efdd');
-        dot.setAttribute('opacity', '0.85');
-        mapDots.appendChild(dot);
-      }
-    });
-  </script>
 
 </body>
 </html>
